@@ -6,6 +6,8 @@ import ast
 WUNDERGROUND_API_KEY = "3ec21efc1c37b8b2"
 WUNDERGROUND_BASE_URL = "http://api.wunderground.com/api/"+WUNDERGROUND_API_KEY
 
+MBTA_API_KEY = "KE_VanziA0OQ_r_sV6_KIQ"
+MBTA_BASE_URL = "http://realtime.mbta.com/developer/api/v2/"
 
 def get_json(url):
 	"""
@@ -153,5 +155,15 @@ def hour_summary(year, month, day, hour):
 	hourData = hourData.replace("}", '')
 	return hourData
 
+def fetch_mbta_routes():
+	"""
+	Fetches a complete list of routes for which data can be requested through the MBTA API
+	"""
+	query = "routes"
+	api_key = "?api_key=%s" % MBTA_API_KEY
+	format = "&format=json"
+	return get_json(MBTA_BASE_URL + query + api_key + format)
 
-print hour_summary('2014', '03', '30', '01')
+
+# print hour_summary('2014', '03', '30', '01')
+print fetch_mbta_routes()
