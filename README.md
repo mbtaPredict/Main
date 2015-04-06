@@ -1,6 +1,6 @@
-#/ mbtaPredict
+# hubwayPredict
 
-A comprehensive prediction of ridership for the MBTA based on historical ridership and weather conditions.
+A comprehensive prediction of ridership for Hubway, a bikesharing service in Boston, based on historical ridership and weather conditions.
 
 ##Creators
 **Kevin Crispie**
