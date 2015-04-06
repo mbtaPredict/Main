@@ -2,10 +2,13 @@ import urllib   # urlencode function
 import urllib2  # urlopen function (better than urllib version)
 import json
 import ast
+from pprint import pprint
 
 WUNDERGROUND_API_KEY = "3ec21efc1c37b8b2"
 WUNDERGROUND_BASE_URL = "http://api.wunderground.com/api/"+WUNDERGROUND_API_KEY
 
+MBTA_API_KEY = "KE_VanziA0OQ_r_sV6_KIQ"
+MBTA_BASE_URL = "http://realtime.mbta.com/developer/api/v2/"
 
 def get_json(url):
 	"""
@@ -152,6 +155,5 @@ def hour_summary(year, month, day, hour):
 	hourData = hourData.replace("'", '')
 	hourData = hourData.replace("}", '')
 	return hourData
-
 
 print hour_summary('2014', '03', '30', '01')
