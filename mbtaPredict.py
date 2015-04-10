@@ -2,6 +2,7 @@ import urllib   # urlencode function
 import urllib2  # urlopen function (better than urllib version)
 import json
 import ast
+import time
 from pprint import pprint
 
 WUNDERGROUND_API_KEY = "3ec21efc1c37b8b2"
@@ -31,7 +32,7 @@ def weather_on(date):
 	return get_json(WUNDERGROUND_BASE_URL+ "/history_" + str(date) + "/q/MA/Boston.json")
 
 
-def store_2014_data():
+def store_year_data(year):
 	"""
 	Stores the hourly weather data for 2014 and stores it as 365 separate .txt files in a folder
 	called '2014Data'.
@@ -41,7 +42,6 @@ def store_2014_data():
 	SAFETY = True
 
 	#The starting date variables
-	year = 2014
 	month = 1
 	day = 1
 
@@ -49,6 +49,7 @@ def store_2014_data():
 	month31 = [1, 3, 5, 7, 8, 10, 12]
 	month30 = [4, 6, 9, 11]
 	month28 = [2]
+	month29 = [2]
 
 	#List used to convert numbers to 2 digit strings
 	number = ['00', '01', '02', '03', '04', '05', '06', '07', '08', '09', '10',
@@ -57,31 +58,34 @@ def store_2014_data():
 
 	#Access the Wunderground data and archives it for every day in a year
 	if SAFETY == False:
-		for x in xrange(365):
-			for x in range(12):
-				day = 1
-				if month in month31:
-					for x in range(31):
-						date = str(year)+number[month]+number[day]
-						f = open(str(year)+'Data/'+str(year)+'-'+number[month]+'-'+number[day]+'.txt', 'w')
-						f.write(weather_on(date))
-						f.close()
-						day += 1
-				elif month in month30:
-					for x in range(30):
-						date = str(year)+number[month]+number[day]
-						f = open(str(year)+'Data/'+str(year)+'-'+number[month]+'-'+number[day]+'.txt', 'w')
-						f.write(weather_on(date))
-						f.close()
-						day += 1
-				elif month in month28:
-					for x in range(28):
-						date = str(year)+number[month]+number[day]
-						f = open(str(year)+'Data/'+str(year)+'-'+number[month]+'-'+number[day]+'.txt', 'w')
-						f.write(weather_on(date))
-						f.close()
-						day += 1
-				month += 1
+		for x in range(12):
+			day = 1
+			if month in month31:
+				for x in range(31):
+					date = str(year)+number[month]+number[day]
+					f = open(str(year)+'Data/'+str(year)+'-'+number[month]+'-'+number[day]+'.txt', 'w')
+					f.write(str(weather_on(date)))
+					f.close()
+					time.sleep(6)
+					day += 1
+			elif month in month30:
+				for x in range(30):
+					date = str(year)+number[month]+number[day]
+					f = open(str(year)+'Data/'+str(year)+'-'+number[month]+'-'+number[day]+'.txt', 'w')
+					f.write(str(weather_on(date)))
+					f.close()
+					time.sleep(6)
+					day += 1
+			elif month in month28:
+				for x in range(29):
+					date = str(year)+number[month]+number[day]
+					f = open(str(year)+'Data/'+str(year)+'-'+number[month]+'-'+number[day]+'.txt', 'w')
+					f.write(str(weather_on(date)))
+					f.close()
+					time.sleep(6)
+					day += 1
+			month += 1
+
 
 def archived_day(year, month=-1, day=-1):
 	"""
@@ -100,6 +104,7 @@ def archived_day(year, month=-1, day=-1):
 		weatherData = f.read()
 		weatherData = ast.literal_eval(weatherData)
 		return weatherData
+
 
 def archived_hour(year, month, day, hour):
 	"""
@@ -156,4 +161,16 @@ def hour_summary(year, month, day, hour):
 	hourData = hourData.replace("}", '')
 	return hourData
 
-print hour_summary('2014', '03', '30', '01')
+
+def stuff():
+	f = open('HubwayData/2011_hubway_trips.csv', 'r')
+	hubwayData = f.read()
+	hubwayData = hubwayData.split('\n')
+	for x in xrange(len(hubwayData)):
+		hubwayData[x] = hubwayData[x].split(',')
+	# for x in hubwayData:
+	# 	if len(hubwayData[x]>0):
+	# 		rideData.append(hubwayData[x])
+	return len(hubwayData)
+
+print stuff()
