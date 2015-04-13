@@ -150,6 +150,11 @@ def archived_hour(year, month, day, hour):
 				startFound = True
 				break
 
+	#If the code STILL does not find a place to start, have it start from hour 00
+	if not startFound:
+		start = 0
+		print "ERROR 404: START NOT FOUND ON", year, month, day, hour
+
 	#Find the index of the time closest to the desired time
 	correctHourIndex = 0
 	if int(hour) != 0:
@@ -183,3 +188,5 @@ def hour_summary(year, month, day, hour):
 	hourData = hourData.replace("'", '')
 	hourData = hourData.replace("}", '')
 	return hourData
+
+print archived_hour('2013', '08', '13', '01')
