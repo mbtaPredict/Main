@@ -43,7 +43,6 @@ def get_month_days(file_id):
 		year.append(split_date_string[2])
 	#print day
 
-	march = day[month.index('3'):month.index('4')]
 	april = day[month.index('4'):month.index('5')]
 	may = day[month.index('5'):month.index('6')]
 	june = day[month.index('6'):month.index('7')]
@@ -53,39 +52,31 @@ def get_month_days(file_id):
 	october = day[month.index('10'):month.index('11')]
 	november = day[month.index('11')::]
 
-	return [march, april, may,  june, july, august, september, october, november]
+	return [april, may,  june, july, august, september, october, november]
 
 
-file_path = 'HubwayData/2012_hubway_trips.csv'
+file_path = 'HubwayData/2013_hubway_trips.csv'
 bike_reader = get_file(file_path)
 month_days = get_month_days(bike_reader)
 
 #separate out trips by month
 
-march = month_days[0]
-april = month_days[1]
-may = month_days[2]
-june = month_days[3]
-july = month_days[4]
-august = month_days[5]
-september = month_days[6]
-october = month_days[7]
-november = month_days[8]
+april = month_days[0]
+may = month_days[1]
+june = month_days[2]
+july = month_days[3]
+august = month_days[4]
+september = month_days[5]
+october = month_days[6]
+november = month_days[7]
 
 #count number of trips for each day, separated by month
-
-march_count = []
-
-for x in range(1,32):
-	march_count.append(march.count(str(x)))
-march_count = march_count[14:]
-
 
 april_count = []
 
 for x in range(1,32):
 	april_count.append(april.count(str(x)))
-april_count = april_count[:-1]
+april_count = april_count[2:-1]
 
 may_count = []
 
@@ -123,10 +114,10 @@ november_count = []
 
 for x in range(1,32):
 	november_count.append(november.count(str(x)))
-november_count = november_count[:-3]
+november_count = november_count[:-1]
 
 #get a list of number of trips for each month
-all_months_count = march_count + april_count + may_count + june_count + july_count + august_count + september_count + october_count + november_count
+all_months_count = april_count + may_count + june_count + july_count + august_count + september_count + october_count + november_count
 
 y = all_months_count
 x = range(len(y)) #increases 1 per day
@@ -136,5 +127,5 @@ plot(x,y,'yo', x, fit_fn(x), '--k') #plot regression
 #plt.plot(all_months_count) #regular line plot
 plt.xlabel('Day of Operation')
 plt.ylabel('Number of Riders')
-plt.title('Hubway Ridership in 2012')
+plt.title('Hubway Ridership in 2013')
 plt.show()
