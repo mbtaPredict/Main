@@ -34,8 +34,8 @@ def weather_on(date):
 
 def store_year_data(year):
 	"""
-	Stores the hourly weather data for 2014 and stores it as 365 separate .txt files in a folder
-	called '2014Data'.
+	Stores the hourly weather data for <YEAR> and stores it as 365 separate .txt files in a folder
+	called '<YEAR>Data'. The folder called '<YEAR>Data' needs to be made before hand by the user.
 	"""
 
 	#Variable that keeps the code from running accidentally (set to False to run code)
@@ -49,7 +49,10 @@ def store_year_data(year):
 	month31 = [1, 3, 5, 7, 8, 10, 12]
 	month30 = [4, 6, 9, 11]
 	month28 = [2]
-	month29 = [2]
+	if year % 4 == 0:
+		numDaysFeb = 29
+	else:
+		numDaysFeb = 28
 
 	#List used to convert numbers to 2 digit strings
 	number = ['00', '01', '02', '03', '04', '05', '06', '07', '08', '09', '10',
@@ -77,7 +80,7 @@ def store_year_data(year):
 					time.sleep(6)
 					day += 1
 			elif month in month28:
-				for x in range(29):
+				for x in range(numDaysFeb):
 					date = str(year)+number[month]+number[day]
 					f = open(str(year)+'Data/'+str(year)+'-'+number[month]+'-'+number[day]+'.txt', 'w')
 					f.write(str(weather_on(date)))
@@ -89,11 +92,21 @@ def store_year_data(year):
 
 def archived_day(year, month=-1, day=-1):
 	"""
-	Input: past date that you want to acces the weather data of ('yyyy-mm-dd' OR 'yyyy', 'mm', 'dd')
+	Input: string of past date that you want to acces the weather data of ('yyyy-mm-dd' OR 'yyyy', 'mm', 'dd')
 	Output: hourly weather data from archives
 	"""
 
-	#If statements sort out the format of the input
+	#Convert inputs to strings
+	year = str(year)
+	month = str(month)
+	day = str(day)
+
+	if len(month) == 1:
+		month = '0' + month
+	if len(day) == 1:
+		day = '0' + day
+
+	#If statements that sort out the format of the input
 	if '-' in year:
 		f = open(year[:4]+'Data/'+year+'.txt')
 		weatherData = f.read()
@@ -160,17 +173,3 @@ def hour_summary(year, month, day, hour):
 	hourData = hourData.replace("'", '')
 	hourData = hourData.replace("}", '')
 	return hourData
-
-
-def stuff():
-	f = open('HubwayData/2011_hubway_trips.csv', 'r')
-	hubwayData = f.read()
-	hubwayData = hubwayData.split('\n')
-	for x in xrange(len(hubwayData)):
-		hubwayData[x] = hubwayData[x].split(',')
-	# for x in hubwayData:
-	# 	if len(hubwayData[x]>0):
-	# 		rideData.append(hubwayData[x])
-	return len(hubwayData)
-
-print stuff()

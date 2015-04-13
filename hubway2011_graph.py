@@ -9,7 +9,6 @@ def get_file(file_path):
 
 	return bike_reader
 
-
 def get_month_days(file_id):
 	standard_datetime = []
 	for line in file_id:
@@ -29,8 +28,6 @@ def get_month_days(file_id):
 		day.append(split_date_string[1])
 		year.append(split_date_string[2])
 	#print day
-
-
 
 	july = day[0:month.index('8')]
 	august = day[month.index('8'):month.index('9')]
@@ -85,6 +82,10 @@ x = range(len(y))
 fit = polyfit(x,y,5)
 fit_fn = poly1d(fit)
 #plot(x,y,'yo', x, fit_fn(x), '--k')
+
+print len(all_months_count)
+print all_months_count
+
 plt.plot(all_months_count)
 plt.xlabel('Day of Operation')
 plt.ylabel('Number of Riders')
