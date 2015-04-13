@@ -96,15 +96,14 @@ def archived_day(year, month=-1, day=-1):
 	Output: hourly weather data from archives
 	"""
 
-	#Convert inputs to strings
+	#Convert inputs to strings and integers
 	year = str(year)
-	month = str(month)
-	day = str(day)
+	month = int(month)
+	day = int(day)
 
-	if len(month) == 1:
-		month = '0' + month
-	if len(day) == 1:
-		day = '0' + day
+	#Converts month and day into 2 digit integers
+	month = "%02d" % month
+	day = "%02d" % day
 
 	#If statements that sort out the format of the input
 	if '-' in year:
