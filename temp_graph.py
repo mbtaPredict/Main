@@ -62,7 +62,6 @@ def plot_weather(year):
 				day = "%02d" % day
 				hour = "%02d" % hour
 
-				print (year, month, day, hour)
 				weatherData = archived_hour(year, month, day, hour)
 				all_temps.append(weatherData['tempi'])
 
