@@ -17,7 +17,6 @@ def get_file(file_path):
 
 	return bike_reader
 
-
 def get_month_days(file_id):
 	"""takes a file id and returns month_days, a list of all the individual 
 	Hubway trips in a month in a list of lists. Each nested list has all the 
@@ -44,8 +43,6 @@ def get_month_days(file_id):
 		month.append(split_date_string[0])
 		day.append(split_date_string[1])
 		year.append(split_date_string[2])
-	
-
 
 	#separates a large list of days into corresponding month
 	july = day[0:month.index('8')]
