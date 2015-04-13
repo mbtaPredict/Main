@@ -34,7 +34,7 @@ def weather_on(date):
 
 def store_year_data(year):
 	"""
-	Stores the hourly weather data for 2014 and stores it as 365 separate .txt files in a folder
+	Stores the hourly weather data for <YEAR> and stores it as 365 separate .txt files in a folder
 	called '<YEAR>Data'.
 	"""
 
@@ -77,7 +77,7 @@ def store_year_data(year):
 					# time.sleep(6)
 					day += 1
 			elif month in month28:
-				for x in range(28):
+				for x in range(29):
 					date = str(year)+number[month]+number[day]
 					f = open(str(year)+'Data/'+str(year)+'-'+number[month]+'-'+number[day]+'.txt', 'w')
 					f.write(str(weather_on(date)))
@@ -173,4 +173,4 @@ def stuff():
 	# 		rideData.append(hubwayData[x])
 	return len(hubwayData)
 
-store_year_data(2011)
+store_year_data(2012)
