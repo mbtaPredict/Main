@@ -188,5 +188,3 @@ def hour_summary(year, month, day, hour):
 	hourData = hourData.replace("'", '')
 	hourData = hourData.replace("}", '')
 	return hourData
-
-print archived_hour('2013', '08', '13', '01')

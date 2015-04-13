@@ -127,5 +127,5 @@ plot(x,y,'yo', x, fit_fn(x), '--k') #plot regression
 #plt.plot(all_months_count) #regular line plot
 plt.xlabel('Day of Operation')
 plt.ylabel('Number of Riders')
-plt.title('Hubway Ridership in 2013')
+plt.title('Hubway Ridership in 2013 (April 2nd - November 30th)')
 plt.show()
