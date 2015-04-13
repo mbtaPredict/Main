@@ -129,15 +129,26 @@ def archived_hour(year, month, day, hour):
 	#	dictionary that occupies one index in the list)
 	dayData = archived_day(year, month, day)
 	hoursListData = dayData['history']['observations']
+	startFound = False
 
 	#Find the first time that is an hour before the specified time
 	for x in xrange(len(hoursListData)):
 		if int(hour) == 0:
 			start = 0
+			startFound = True
 			break
 		elif int(hoursListData[x]['date']['hour']) == int(hour)-1:
 			start = x
+			startFound = True
 			break
+
+	#If the code does not find a place to start, then run this backup code
+	if not startFound:
+		for x in xrange(len(hoursListData)):
+			if int(hoursListData[x]['date']['hour']) == int(hour)-2:
+				start = x
+				startFound = True
+				break
 
 	#Find the index of the time closest to the desired time
 	correctHourIndex = 0
