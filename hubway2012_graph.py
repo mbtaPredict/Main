@@ -85,6 +85,7 @@ april_count = []
 
 for x in range(1,32):
 	april_count.append(april.count(str(x)))
+april_count = april_count(:-1)
 
 may_count = []
 
