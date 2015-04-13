@@ -35,11 +35,11 @@ def weather_on(date):
 def store_year_data(year):
 	"""
 	Stores the hourly weather data for 2014 and stores it as 365 separate .txt files in a folder
-	called '2014Data'.
+	called '<YEAR>Data'.
 	"""
 
 	#Variable that keeps the code from running accidentally (set to False to run code)
-	SAFETY = True
+	SAFETY = False
 
 	#The starting date variables
 	month = 1
@@ -49,7 +49,7 @@ def store_year_data(year):
 	month31 = [1, 3, 5, 7, 8, 10, 12]
 	month30 = [4, 6, 9, 11]
 	month28 = [2]
-	month29 = [2]
+	month29 = []
 
 	#List used to convert numbers to 2 digit strings
 	number = ['00', '01', '02', '03', '04', '05', '06', '07', '08', '09', '10',
@@ -66,7 +66,7 @@ def store_year_data(year):
 					f = open(str(year)+'Data/'+str(year)+'-'+number[month]+'-'+number[day]+'.txt', 'w')
 					f.write(str(weather_on(date)))
 					f.close()
-					time.sleep(6)
+					# time.sleep(6)
 					day += 1
 			elif month in month30:
 				for x in range(30):
@@ -74,15 +74,15 @@ def store_year_data(year):
 					f = open(str(year)+'Data/'+str(year)+'-'+number[month]+'-'+number[day]+'.txt', 'w')
 					f.write(str(weather_on(date)))
 					f.close()
-					time.sleep(6)
+					# time.sleep(6)
 					day += 1
 			elif month in month28:
-				for x in range(29):
+				for x in range(28):
 					date = str(year)+number[month]+number[day]
 					f = open(str(year)+'Data/'+str(year)+'-'+number[month]+'-'+number[day]+'.txt', 'w')
 					f.write(str(weather_on(date)))
 					f.close()
-					time.sleep(6)
+					# time.sleep(6)
 					day += 1
 			month += 1
 
@@ -173,4 +173,4 @@ def stuff():
 	# 		rideData.append(hubwayData[x])
 	return len(hubwayData)
 
-print stuff()
+store_year_data(2011)
