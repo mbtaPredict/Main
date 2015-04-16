@@ -1,5 +1,5 @@
 """
-Main file for hubwayPredict project.
+Graphs ride duration of Hubway rides for 2013.
 """
 
 from os import path
