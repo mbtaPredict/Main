@@ -1,3 +1,26 @@
+"""
+LOADS THE WEATHER DATA PICKLE FILE
+	f = open('weatherDataFile', 'rb')
+	weather = pickle.load(open('weatherDataFile', 'rb'))
+	print weather.data[2013][4][3][13]['tempi']
+
+RE-SAVES THE WEATHER DATA TO THE PICKLE FILE
+	pickle.dump(weather, open('weatherDataFile', 'wb'))
+
+HAVE SOME FUN!
+weather = pickle.load(open('weatherDataFile', 'rb'))
+for y in [2011, 2012, 2013]:
+	if y % 4 == 0:
+		numDaysInMonth = [31, 29, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31]
+	else:
+		numDaysInMonth = [31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31]
+	for m in range(1,13):
+		for d in range(numDaysInMonth[m-1]):
+			for h in range(0,24):
+				print weather.data[y][m][d+1][h]['tempi'],
+"""
+
+
 import urllib   # urlencode function
 import urllib2  # urlopen function (better than urllib version)
 import json
@@ -207,10 +230,3 @@ class WeatherDatum:
 				self.data[year][month+1][day+1] = {}
 				for hour in xrange(24):
 					self.data[year][month+1][day+1][hour] = archived_hour(year, month+1, day+1, hour)
-
-# LOADS THE WEATHER DATA PICKLE FILE
-f = open('weatherDataFile', 'rb')
-weather = pickle.load(open('weatherDataFile', 'rb'))
-
-# RE-SAVES THE WEATHER DATA TO THE PICKLE FILE
-# pickle.dump(weather, open('weatherDataFile', 'wb'))
