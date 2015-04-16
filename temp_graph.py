@@ -3,25 +3,13 @@ from os import path
 import ast
 import matplotlib.pyplot as plt
 from pylab import *
+import pickle
+
 from weather_collection import archived_day
 from weather_collection import archived_hour
+from weather_collection import WeatherDatum
 
-def parse_weather(month, day, year):
-	"""
-	Input: month, day, and year for the day you wish to pull weather data
-	"""
-
-	#converts day and month into 2 digit integers with leading zeros
-	day = "%02d" % day
-	month = "%02d" % month
-
-	#establishes file path for txt file
-	file_path = path.relpath("%sData/%s-%s-%s.txt") % (year, year, month, day)
-
-	f = open(file_path, 'r')
-	weatherData = f.read()
-	weatherData = ast.literal_eval(weatherData)
-	return weatherData
+weather = pickle.load(open('weatherDataFile', 'rb'))
 
 def plot_weather(year):
 	"""
@@ -47,30 +35,18 @@ def plot_weather(year):
 						7:long_month_days, 8:long_month_days, 9:short_month_days,
 						10:long_month_days, 11:short_month_days, 12:long_month_days}
 
-	#calls parse_weather for each day of the year and appends temperature for
-	#each hour into the all_temps list
+	#appends temperature for each hour into the all_temps list
 	all_temps = []
 	for month in range(4,12):
 		for day in month_days[month]:
 			for hour in range(24):
-				#converts month, day, and hour into 2 digit integers with leading zeros
-				#for input into archived_hour
-				year = str(year)
-				month = int(month)
-				day = int(day)
-				hour = int(hour)
-				month = "%02d" % month
-				day = "%02d" % day
-				hour = "%02d" % hour
-
-				weatherData = archived_hour(year, month, day, hour)
-				all_temps.append(weatherData['tempi'])
+				all_temps.append(weather.data[year][month][day][hour]['tempi'])
 
 	#converts all strings in all_temps into floats
 	for i in range(len(all_temps)):
 		all_temps[i] = float(all_temps[i])
 
-	x = range(len(all_temps)) #crea
+	x = range(len(all_temps)) #create x axis
 	fit = polyfit(x,all_temps,3) #generate regression with number as degree
 	fit_fn = poly1d(fit) #create polynomial to graph
 	plot(x,all_temps, x, fit_fn(x), '--k') #plot regression
