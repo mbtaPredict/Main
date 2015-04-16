@@ -4,6 +4,7 @@ import json
 import ast
 import time
 from pprint import pprint
+import pickle
 
 WUNDERGROUND_API_KEY = "3ec21efc1c37b8b2"
 WUNDERGROUND_BASE_URL = "http://api.wunderground.com/api/"+WUNDERGROUND_API_KEY
@@ -122,6 +123,17 @@ def archived_hour(year, month, day, hour):
 	Output: dictionary of weather data of that hour from the archives
 	"""
 
+	#Convert inputs to strings and integers
+	year = str(year)
+	month = int(month)
+	day = int(day)
+	hour = int(hour)
+
+	#Converts month and day into 2 digit integers
+	month = "%02d" % month
+	day = "%02d" % day
+	hour = "%02d" % hour
+
 	#Create a list of weather data for all hours of the specified day (each hour is a
 	#	dictionary that occupies one index in the list)
 	dayData = archived_day(year, month, day)
@@ -171,17 +183,26 @@ def archived_hour(year, month, day, hour):
 	return hoursListData[correctHourIndex]
 
 
-def hour_summary(year, month, day, hour):
-	"""
-	Input: past hour that you want to access the weather data of ('yyyy', 'mm', 'dd', 'hh'
-		   *in military time betweeen 00 and 23)
-	Output: summary of weather data of that hour from the archives
-	"""
+class WeatherDatum:
+	def __init__(self):
+		self.data = {}
 
-	#Makes the dictionary of data into a string split into lines
-	hourData = str(archived_hour(year, month, day, hour))
-	hourData = hourData.replace(", '", '\n')
-	hourData = hourData.replace("{", '\n')
-	hourData = hourData.replace("'", '')
-	hourData = hourData.replace("}", '')
-	return hourData
+	def add_year(self, year):
+		if year % 4 == 0:
+			numDaysInMonth = [31, 29, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31]
+		else:
+			numDaysInMonth = [31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31]
+		self.data[year] = {}
+		for month in xrange(12):
+			self.data[year][month+1] = {}
+			for day in xrange(numDaysInMonth[month]):
+				self.data[year][month+1][day+1] = {}
+				for hour in xrange(24):
+					self.data[year][month+1][day+1][hour] = archived_hour(year, month+1, day+1, hour)
+
+# LOADS THE WEATHER DATA PICKLE FILE
+f = open('weatherDataFile', 'rb')
+weather = pickle.load(open('weatherDataFile', 'rb'))
+
+# RE-SAVES THE WEATHER DATA TO THE PICKLE FILE
+# pickle.dump(weather, open('weatherDataFile', 'wb'))
