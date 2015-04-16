@@ -32,8 +32,9 @@ def weather_on(date):
 
 def store_year_data(year):
 	"""
-	Stores the hourly weather data for <YEAR> and stores it as 365 separate .txt files in a folder
-	called '<YEAR>Data'. The folder called '<YEAR>Data' needs to be made before hand by the user.
+	Stores the hourly weather data for <YEAR> and stores it as 365 separate
+		.txt files in a folder called '<YEAR>Data'. The folder called
+		'<YEAR>Data' needs to be made before hand by the user.
 	"""
 
 	#Variable that keeps the code from running accidentally (set to False to run code)
@@ -90,7 +91,8 @@ def store_year_data(year):
 
 def archived_day(year, month=-1, day=-1):
 	"""
-	Input: string of past date that you want to acces the weather data of ('yyyy-mm-dd' OR 'yyyy', 'mm', 'dd')
+	Input: string of past date that you want to acces the weather data of
+		('yyyy-mm-dd' OR 'yyyy', 'mm', 'dd')
 	Output: hourly weather data from archives
 	"""
 
@@ -118,8 +120,8 @@ def archived_day(year, month=-1, day=-1):
 
 def archived_hour(year, month, day, hour):
 	"""
-	Input: past hour that you want to access the weather data of ('yyyy', 'mm', 'dd', 'hh'
-		   *in military time betweeen 00 and 23)
+	Input: past hour that you want to access the weather data of
+		('yyyy', 'mm', 'dd', 'hh' *in military time betweeen 00 and 23)
 	Output: dictionary of weather data of that hour from the archives
 	"""
 
@@ -188,6 +190,12 @@ class WeatherDatum:
 		self.data = {}
 
 	def add_year(self, year):
+		"""
+		Input: integer for year you want to add weather data for(we have to
+			have the weather data already stored for that year)
+		Output: stores the weather data for that year in the class
+		"""
+
 		if year % 4 == 0:
 			numDaysInMonth = [31, 29, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31]
 		else:
