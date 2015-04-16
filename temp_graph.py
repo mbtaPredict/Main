@@ -5,8 +5,6 @@ import matplotlib.pyplot as plt
 from pylab import *
 import pickle
 
-from weather_collection import archived_day
-from weather_collection import archived_hour
 from weather_collection import WeatherDatum
 
 weather = pickle.load(open('weatherDataFile', 'rb'))
