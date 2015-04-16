@@ -35,11 +35,11 @@ def weather_on(date):
 def store_year_data(year):
 	"""
 	Stores the hourly weather data for <YEAR> and stores it as 365 separate .txt files in a folder
-	called '<YEAR>Data'.
+	called '<YEAR>Data'. The folder called '<YEAR>Data' needs to be made before hand by the user.
 	"""
 
 	#Variable that keeps the code from running accidentally (set to False to run code)
-	SAFETY = False
+	SAFETY = True
 
 	#The starting date variables
 	month = 1
@@ -49,7 +49,10 @@ def store_year_data(year):
 	month31 = [1, 3, 5, 7, 8, 10, 12]
 	month30 = [4, 6, 9, 11]
 	month28 = [2]
-	month29 = []
+	if year % 4 == 0:
+		numDaysFeb = 29
+	else:
+		numDaysFeb = 28
 
 	#List used to convert numbers to 2 digit strings
 	number = ['00', '01', '02', '03', '04', '05', '06', '07', '08', '09', '10',
@@ -66,7 +69,7 @@ def store_year_data(year):
 					f = open(str(year)+'Data/'+str(year)+'-'+number[month]+'-'+number[day]+'.txt', 'w')
 					f.write(str(weather_on(date)))
 					f.close()
-					# time.sleep(6)
+					time.sleep(6)
 					day += 1
 			elif month in month30:
 				for x in range(30):
@@ -74,26 +77,35 @@ def store_year_data(year):
 					f = open(str(year)+'Data/'+str(year)+'-'+number[month]+'-'+number[day]+'.txt', 'w')
 					f.write(str(weather_on(date)))
 					f.close()
-					# time.sleep(6)
+					time.sleep(6)
 					day += 1
 			elif month in month28:
-				for x in range(29):
+				for x in range(numDaysFeb):
 					date = str(year)+number[month]+number[day]
 					f = open(str(year)+'Data/'+str(year)+'-'+number[month]+'-'+number[day]+'.txt', 'w')
 					f.write(str(weather_on(date)))
 					f.close()
-					# time.sleep(6)
+					time.sleep(6)
 					day += 1
 			month += 1
 
 
 def archived_day(year, month=-1, day=-1):
 	"""
-	Input: past date that you want to acces the weather data of ('yyyy-mm-dd' OR 'yyyy', 'mm', 'dd')
+	Input: string of past date that you want to acces the weather data of ('yyyy-mm-dd' OR 'yyyy', 'mm', 'dd')
 	Output: hourly weather data from archives
 	"""
 
-	#If statements sort out the format of the input
+	#Convert inputs to strings and integers
+	year = str(year)
+	month = int(month)
+	day = int(day)
+
+	#Converts month and day into 2 digit integers
+	month = "%02d" % month
+	day = "%02d" % day
+
+	#If statements that sort out the format of the input
 	if '-' in year:
 		f = open(year[:4]+'Data/'+year+'.txt')
 		weatherData = f.read()
@@ -117,15 +129,31 @@ def archived_hour(year, month, day, hour):
 	#	dictionary that occupies one index in the list)
 	dayData = archived_day(year, month, day)
 	hoursListData = dayData['history']['observations']
+	startFound = False
 
 	#Find the first time that is an hour before the specified time
 	for x in xrange(len(hoursListData)):
 		if int(hour) == 0:
 			start = 0
+			startFound = True
 			break
 		elif int(hoursListData[x]['date']['hour']) == int(hour)-1:
 			start = x
+			startFound = True
 			break
+
+	#If the code does not find a place to start, then run this backup code
+	if not startFound:
+		for x in xrange(len(hoursListData)):
+			if int(hoursListData[x]['date']['hour']) == int(hour)-2:
+				start = x
+				startFound = True
+				break
+
+	#If the code STILL does not find a place to start, have it start from hour 00
+	if not startFound:
+		start = 0
+		print "ERROR 404: START NOT FOUND ON", year, month, day, hour
 
 	#Find the index of the time closest to the desired time
 	correctHourIndex = 0
@@ -160,17 +188,3 @@ def hour_summary(year, month, day, hour):
 	hourData = hourData.replace("'", '')
 	hourData = hourData.replace("}", '')
 	return hourData
-
-
-def stuff():
-	f = open('HubwayData/2011_hubway_trips.csv', 'r')
-	hubwayData = f.read()
-	hubwayData = hubwayData.split('\n')
-	for x in xrange(len(hubwayData)):
-		hubwayData[x] = hubwayData[x].split(',')
-	# for x in hubwayData:
-	# 	if len(hubwayData[x]>0):
-	# 		rideData.append(hubwayData[x])
-	return len(hubwayData)
-
-store_year_data(2012)
