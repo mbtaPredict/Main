@@ -59,7 +59,7 @@ def store_year_data(year):
 			  '11', '12', '13', '14', '15', '16', '17', '18', '19', '20', '21',
 			  '22', '23', '24', '25', '26', '27', '28', '29', '30', '31']
 
-	#Access the Wunderground data and archives it for every day in a year
+	#Access the Wunderground data and archives it to a text file for every day in a year
 	if SAFETY == False:
 		for x in range(12):
 			day = 1
