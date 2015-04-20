@@ -6,6 +6,8 @@ import csv
 import matplotlib.pyplot as plt
 import matplotlib
 from pylab import *
+import numpy as np
+from numpy import fft
 
 
 def get_file(file_path):
@@ -53,57 +55,170 @@ def get_month_days(file_id):
 
 	return [july, august, september, october, november]
 
+def fourierExtrapolation(x, n_predict):
+    n = x.size
+    n_harm = 4                     # number of harmonics in model
+    t = np.arange(0, n)
+    p = np.polyfit(t, x, 1)  # find linear trend in x
+    x_notrend = x - p[0] * t # detrended x
+    x_freqdom = fft.fft(x_notrend)  # detrended x in frequency domain
+    f = fft.fftfreq(n)              # frequencies
+    indexes = range(n)
+    # sort indexes by frequency, lower -> higher
+    indexes.sort(key = lambda i: np.absolute(f[i]))
+ 
+    t = np.arange(0, n + n_predict)
+    restored_sig = np.zeros(t.size)
+    for i in indexes[:1 + n_harm * 2]:
+        ampli = np.absolute(x_freqdom[i]) / n   # amplitude
+        phase = np.angle(x_freqdom[i])          # phase
+        restored_sig += ampli * np.cos(2 * np.pi * f[i] * t + phase)
+    return restored_sig + p[0] * t
 
-file_path = 'HubwayData/2011_hubway_trips.csv'
-bike_reader = get_file(file_path)
-month_days = get_month_days(bike_reader)
+def day_of_week_classifier(data):
+ 	#Hubway opened on July 28th, a Thursday, in 2011
+ 	thurs_start = 0
+ 	fri_start = 1
+ 	sat_start = 2
+ 	sun_start = 3
+ 	mon_start = 4
+ 	tues_start = 5
+ 	wed_start = 6
 
-#list corresping to date of trips for each month
-july = month_days[0]
-august = month_days[1]
-september = month_days[2]
-october = month_days[3]
-november = month_days[4]
+ 	mon = data[mon_start::7]
+ 	tues = data[tues_start::7]
+ 	wed = data[wed_start::7]
+ 	thurs = data[thurs_start::7]
+ 	fri = data[fri_start::7]
+ 	sat = data[sat_start::7]
+ 	sun = data[sun_start::7]
 
-#counts the number of trips in each month
+ 	return (mon, tues, wed, thurs, fri, sat, sun)
 
-july_count = []
+def sum_daily_totals(daily_totals):
+	mon_sum = sum(daily_totals[0])
+	tues_sum = sum(daily_totals[1])
+	wed_sum = sum(daily_totals[2])
+	thurs_sum = sum(daily_totals[3])
+	fri_sum = sum(daily_totals[4])
+	sat_sum = sum(daily_totals[5])
+	sun_sum = sum(daily_totals[6])
 
-for x in range(1,32):
-	july_count.append(july.count(str(x)))
-july_count = july_count[27:]
+	return (mon_sum, tues_sum, wed_sum, thurs_sum, fri_sum, sat_sum, sun_sum)
 
-august_count = []
+def average_daily_totals(daily_totals):
+	mon_ave = sum(daily_totals[0])/len(daily_totals[0])
+	tues_ave = sum(daily_totals[1])/len(daily_totals[1])
+	wed_ave = sum(daily_totals[2])/len(daily_totals[2])
+	thurs_ave = sum(daily_totals[3])/len(daily_totals[3])
+	fri_ave = sum(daily_totals[4])/len(daily_totals[4])
+	sat_ave = sum(daily_totals[5])/len(daily_totals[5])
+	sun_ave = sum(daily_totals[6])/len(daily_totals[6])
 
-for x in range(1,32):
-	august_count.append(august.count(str(x)))
+	return (mon_ave, tues_ave, wed_ave, thurs_ave, fri_ave, sat_ave, sun_ave)
 
-september_count = []
 
-for x in range(1,32):
-	september_count.append(september.count(str(x)))
-september_count = september_count[:-1]
+def main():
+	file_path = 'HubwayData/2011_hubway_trips.csv'
+	bike_reader = get_file(file_path)
+	month_days = get_month_days(bike_reader)
 
-october_count = []
+	#list corresping to date of trips for each month
+	july = month_days[0]
+	august = month_days[1]
+	september = month_days[2]
+	october = month_days[3]
+	november = month_days[4]
 
-for x in range(1,32):
-	october_count.append(october.count(str(x)))
+	#counts the number of trips in each month
 
-november_count = []
+	july_count = []
 
-for x in range(1,32):
-	november_count.append(november.count(str(x)))
-november_count = november_count[:-1]
+	for x in range(1,32):
+		july_count.append(july.count(str(x)))
+	july_count = july_count[27:]
 
-#get a list of number of trips for all months
-all_months_count = july_count + august_count + september_count + october_count + november_count
-y = all_months_count
-x = range(len(y)) #each day counts up by 1
-fit = polyfit(x,y,4) #regression
-fit_fn = poly1d(fit) #generate polynomial from regression function
-plot(x,y,'yo', x, fit_fn(x), '--k') #plot regression
-#plt.plot(all_months_count) #regular line plot
-plt.xlabel('Day of Operation')
-plt.ylabel('Number of Riders')
-plt.title('Hubway Ridership in 2011')
-plt.show()
+	august_count = []
+
+	for x in range(1,32):
+		august_count.append(august.count(str(x)))
+
+	september_count = []
+
+	for x in range(1,32):
+		september_count.append(september.count(str(x)))
+	september_count = september_count[:-1]
+
+	october_count = []
+
+	for x in range(1,32):
+		october_count.append(october.count(str(x)))
+
+	november_count = []
+
+	for x in range(1,32):
+		november_count.append(november.count(str(x)))
+	november_count = november_count[:-1]
+
+	#get a list of number of trips for all months
+	all_months_count = july_count + august_count + september_count + october_count + november_count
+
+	#polynomial regression
+	fig1 = plt.figure(1)
+	yreg = all_months_count
+	xreg = range(len(yreg)) #each day counts up by 1
+	fit = polyfit(xreg,yreg,4) #regression
+	fit_fn = poly1d(fit) #generate polynomial from regression function
+	ax1 = fig1.add_subplot(111)
+	ax1.plot(xreg,yreg,'yo', xreg, fit_fn(xreg), '--k') #plot regression
+
+	#regular line plot
+	#plt.plot(all_months_count) 
+
+	#Fourier Transform Regression
+	"""
+	xfour = np.array(yreg[70:70+21])
+	n_predict = len(xreg[70:70+21])
+	extrapolation = fourierExtrapolation(xfour, n_predict)
+	plt.plot(np.arange(0, extrapolation.size), extrapolation, 'r', label = 'extrapolation')
+	plt.plot(np.arange(0, xfour.size), xfour, 'b', label = 'x', linewidth = 3)
+	plt.plot(xreg[21:21+21],all_months_count[70+21:70+21+21])
+	plt.legend()
+	plt.show()
+	"""
+
+
+	ax1.set_xlabel('Day of Operation')
+	ax1.set_ylabel('Number of Riders')
+	ax1.set_title('Hubway Ridership in 2011')
+
+	daily_totals = day_of_week_classifier(all_months_count)
+	sum_totals = sum_daily_totals(daily_totals)
+
+	fig2 = plt.figure(2)
+	ax2 = fig2.add_subplot(111)
+	ax2.bar(range(7),sum_totals, 1/1.5, color = "blue")
+	ax2.set_xlabel('Day of Week')
+	ax2.set_ylabel('Amount of Riders')
+	ax2.set_title('Total Ridership by Day')
+
+	ave_totals = average_daily_totals(daily_totals)
+
+	fig3 = plt.figure(3)
+	ax3 = fig3.add_subplot(111)
+	ax3.bar(range(7),ave_totals, 1/1.5, color = "blue")
+	ax3.set_xlabel('Day of Week')
+	ax3.set_ylabel('Amount of Riders')
+	ax3.set_title('Average Ridership by Day')
+
+	fig4 = plt.figure(4)
+	ax4 = fig4.add_subplot(111)
+	ax4.bar(range(len(daily_totals[0])),daily_totals[0], 1/1.5, color = "blue")
+	ax4.set_xlabel('Time of Year')
+	ax4.set_ylabel('Amount of Riders')
+	ax4.set_title('Average Ridership for Mondays')
+	
+	show()
+
+if __name__ == "__main__":
+    main()
