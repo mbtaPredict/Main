@@ -163,6 +163,11 @@ def main():
 	#get a list of number of trips for all months
 	all_months_count = july_count + august_count + september_count + october_count + november_count
 
+	#This code plots in 4 different graphs a polynomial regression,
+	#a bar chart of the total riders on each day of the week,
+	#the average riders per day of the week, and a bar chart
+	#of all the Mondays in the year.
+
 	#polynomial regression
 	fig1 = plt.figure(1)
 	yreg = all_months_count
@@ -186,7 +191,6 @@ def main():
 	plt.legend()
 	plt.show()
 	"""
-
 
 	ax1.set_xlabel('Day of Operation')
 	ax1.set_ylabel('Number of Riders')

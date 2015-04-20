@@ -189,6 +189,11 @@ def main():
 	#get a list of number of trips for each month
 	all_months_count = march_count + april_count + may_count + june_count + july_count + august_count + september_count + october_count + november_count
 
+	#This code plots in 4 different graphs a polynomial regression,
+	#a bar chart of the total riders on each day of the week,
+	#the average riders per day of the week, and a bar chart
+	#of all the Mondays in the year.
+
 	#polynomial regression
 	fig1 = plt.figure(1)
 	yreg = all_months_count
