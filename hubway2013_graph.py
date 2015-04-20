@@ -116,6 +116,19 @@ def average_daily_totals(daily_totals):
 
 	return (mon_ave, tues_ave, wed_ave, thurs_ave, fri_ave, sat_ave, sun_ave)
 
+def get_diff_average(averages):
+	"""Returns the difference between each datapoint and the average of the dataset
+	It is used to calculate the difference bewteen the daily totals and the 
+	average totals for each day. It is returned as a ratio.
+	"""
+
+	all_averaged = np.mean(averages)
+	ratio_diffs = []
+	for x in range(len(averages)):
+		ratio_diffs.append((averages[x] - all_averaged) / all_averaged)
+	
+	return ratio_diffs
+
 def main():	
 	file_path = 'HubwayData/2013_hubway_trips.csv'
 	bike_reader = get_file(file_path)
@@ -242,6 +255,12 @@ def main():
 	ax4.set_title('Average Ridership for Mondays')
 	
 	show()
+
+	#determine the ratio of the difference between the daily ridership and
+	#the average daily ridership and the average ridership
+
+	ratio_diffs = get_diff_average(ave_totals)
+
 
 if __name__ == "__main__":
     main()	
