@@ -1,26 +1,3 @@
-"""
-LOADS THE WEATHER DATA PICKLE FILE
-	f = open('weatherDataFile', 'rb')
-	weather = pickle.load(open('weatherDataFile', 'rb'))
-	print weather.data[2013][4][3][13]['tempi']
-
-RE-SAVES THE WEATHER DATA TO THE PICKLE FILE
-	pickle.dump(weather, open('weatherDataFile', 'wb'))
-
-HAVE SOME FUN!
-weather = pickle.load(open('weatherDataFile', 'rb'))
-for y in [2011, 2012, 2013]:
-	if y % 4 == 0:
-		numDaysInMonth = [31, 29, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31]
-	else:
-		numDaysInMonth = [31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31]
-	for m in range(1,13):
-		for d in range(numDaysInMonth[m-1]):
-			for h in range(0,24):
-				print weather.data[y][m][d+1][h]['tempi'],
-"""
-
-
 import urllib   # urlencode function
 import urllib2  # urlopen function (better than urllib version)
 import json
@@ -29,8 +6,10 @@ import time
 from pprint import pprint
 import pickle
 
+
 WUNDERGROUND_API_KEY = "3ec21efc1c37b8b2"
 WUNDERGROUND_BASE_URL = "http://api.wunderground.com/api/"+WUNDERGROUND_API_KEY
+
 
 def get_json(url):
 	"""
@@ -88,7 +67,7 @@ def store_year_data(year):
 			if month in month31:
 				for x in range(31):
 					date = str(year)+number[month]+number[day]
-					f = open(str(year)+'Data/'+str(year)+'-'+number[month]+'-'+number[day]+'.txt', 'w')
+					f = open('WeatherData/'+str(year)+'Data/'+str(year)+'-'+number[month]+'-'+number[day]+'.txt', 'w')
 					f.write(str(weather_on(date)))
 					f.close()
 					time.sleep(6)
@@ -96,7 +75,7 @@ def store_year_data(year):
 			elif month in month30:
 				for x in range(30):
 					date = str(year)+number[month]+number[day]
-					f = open(str(year)+'Data/'+str(year)+'-'+number[month]+'-'+number[day]+'.txt', 'w')
+					f = open('WeatherData/'+str(year)+'Data/'+str(year)+'-'+number[month]+'-'+number[day]+'.txt', 'w')
 					f.write(str(weather_on(date)))
 					f.close()
 					time.sleep(6)
@@ -104,7 +83,7 @@ def store_year_data(year):
 			elif month in month28:
 				for x in range(numDaysFeb):
 					date = str(year)+number[month]+number[day]
-					f = open(str(year)+'Data/'+str(year)+'-'+number[month]+'-'+number[day]+'.txt', 'w')
+					f = open('WeatherData/'+str(year)+'Data/'+str(year)+'-'+number[month]+'-'+number[day]+'.txt', 'w')
 					f.write(str(weather_on(date)))
 					f.close()
 					time.sleep(6)
@@ -130,12 +109,12 @@ def archived_day(year, month=-1, day=-1):
 
 	#If statements that sort out the format of the input
 	if '-' in year:
-		f = open(year[:4]+'Data/'+year+'.txt')
+		f = open('WeatherData/'+year[:4]+'Data/'+year+'.txt')
 		weatherData = f.read()
 		weatherData = ast.literal_eval(weatherData)
 		return weatherData
 	else:
-		f = open(year+'Data/'+year+'-'+month+'-'+day+'.txt')
+		f = open('WeatherData/'+year+'Data/'+year+'-'+month+'-'+day+'.txt')
 		weatherData = f.read()
 		weatherData = ast.literal_eval(weatherData)
 		return weatherData
@@ -230,3 +209,13 @@ class WeatherDatum:
 				self.data[year][month+1][day+1] = {}
 				for hour in xrange(24):
 					self.data[year][month+1][day+1][hour] = archived_hour(year, month+1, day+1, hour)
+
+# RUN THIS TO OPEN THE WEATHER DATABASE CLASS STRUCTURE:
+# ----------------------------------------------------
+# weather = pickle.load(open('weatherDataFile', 'rb'))
+# ----------------------------------------------------
+
+# RUN THIS TO RE-SAVE THE WEATHER DATA TO THE PICKLE FILE:
+# ----------------------------------------------------
+# pickle.dump(weather, open('weatherDataFile', 'wb'))
+# ----------------------------------------------------
