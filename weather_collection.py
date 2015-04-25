@@ -212,10 +212,10 @@ class WeatherDatum:
 
 # RUN THIS TO OPEN THE WEATHER DATABASE CLASS STRUCTURE:
 # ----------------------------------------------------
-# weather = pickle.load(open('weatherDataFile', 'rb'))
+# weather = pickle.load(open('LargeDataStorage/weatherDataFile', 'rb'))
 # ----------------------------------------------------
 
 # RUN THIS TO RE-SAVE THE WEATHER DATA TO THE PICKLE FILE:
 # ----------------------------------------------------
-# pickle.dump(weather, open('weatherDataFile', 'wb'))
+# pickle.dump(weather, open('LargeDataStorage/weatherDataFile', 'wb'))
 # ----------------------------------------------------

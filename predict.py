@@ -3,7 +3,7 @@ from weather_collection import *
 import string
 
 hubway = pickle.load(open('LargeDataStorage/hubwayDataFile', 'rb'))
-# weather = pickle.load(open('weatherDataFile', 'rb'))
+# weather = pickle.load(open('LargeDataStorage/weatherDataFile', 'rb'))
 
 print 'Welcome to hubwayPredict! Input any date and see what bike ridership will be like!'
 
