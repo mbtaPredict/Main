@@ -107,6 +107,37 @@ class HubwayDatum:
 					for minute in xrange(60):
 						self.data[year][month+1][day+1][hour][minute] = archived_minute(yearHubwayData, year, month+1, day+1, hour, minute)
 
+	def total_rides_in_day(self, year, month, day):
+		"""
+		Input: integers for year, month, day
+		Return: integer for total number of rides on that day
+		"""
+
+		numRidesInDay = 0
+
+		for hour in self.data[year][month][day]:
+			for minute in self.data[year][month][day][hour]:
+				if self.data[year][month][day][hour][minute] == -1:
+					pass
+				else:	
+					numRidesInDay += len(self.data[year][month][day][hour][minute])
+		return numRidesInDay
+
+	def total_rides_in_hour(self, year, month, day, hour):
+		"""
+		Input: integers for year, month, day, hour
+		Return: integer for total number of rides in that hour
+		"""
+		
+		numRidesInHour = 0
+
+		for minute in self.data[year][month][day][hour]:
+			if self.data[year][month][day][hour][minute] == -1:
+				pass
+			else:	
+				numRidesInHour += len(self.data[year][month][day][hour][minute])
+		return numRidesInHour
+
 # RUN THIS TO CREATE HUBWAY DATABASE CLASS STRUCTURE:
 #----------------------------------------------------
 # hubway = HubwayDatum()
