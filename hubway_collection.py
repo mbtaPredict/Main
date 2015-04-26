@@ -139,26 +139,15 @@ class HubwayDatum:
 		return numRidesInHour
 
 # RUN THIS TO CREATE HUBWAY DATABASE CLASS STRUCTURE:
-#----------------------------------------------------
+# ----------------------------------------------------
 # hubway = HubwayDatum()
 # hubway.add_year(2011)
 # hubway.add_year(2012)
 # hubway.add_year(2013)
 # pickle.dump(hubway, open('LargeDataStorage/hubwayDataFile', 'wb'))
-#----------------------------------------------------
+# ----------------------------------------------------
 
 # RUN THIS TO OPEN THE HUBWAY DATABASE CLASS STRUCTURE:
-#----------------------------------------------------
+# ----------------------------------------------------
 # hubway = pickle.load(open('LargeDataStorage/hubwayDataFile', 'rb'))
-#----------------------------------------------------
-
-# for y in [2013]:
-# 	if y % 4 == 0:
-# 		numDaysInMonth = [31, 29, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31]
-# 	else:
-# 		numDaysInMonth = [31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31]
-# 	for m in [4]:
-# 		for d in range(numDaysInMonth[m-1]):
-# 			for h in range(24):
-# 				for mn in range(60):
-# 					print hubway.data[y][m][d+1][h][mn]
+# ----------------------------------------------------
