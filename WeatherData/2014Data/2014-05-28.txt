@@ -1,0 +1,785 @@
+
+{
+  "response": {
+  "version":"0.1",
+  "termsofService":"http://www.wunderground.com/weather/api/d/terms.html",
+  "features": {
+  "history": 1
+  }
+	}
+		,
+	"history": {
+		"date": {
+		"pretty": "May 28, 2014",
+		"year": "2014",
+		"mon": "05",
+		"mday": "28",
+		"hour": "12",
+		"min": "00",
+		"tzname": "America/New_York"
+		},
+		"utcdate": {
+		"pretty": "May 28, 2014",
+		"year": "2014",
+		"mon": "05",
+		"mday": "28",
+		"hour": "16",
+		"min": "00",
+		"tzname": "UTC"
+		},
+		"observations": [
+		{
+		"date": {
+		"pretty": "12:54 AM EDT on May 28, 2014",
+		"year": "2014",
+		"mon": "05",
+		"mday": "28",
+		"hour": "00",
+		"min": "54",
+		"tzname": "America/New_York"
+		},
+		"utcdate": {
+		"pretty": "4:54 AM GMT on May 28, 2014",
+		"year": "2014",
+		"mon": "05",
+		"mday": "28",
+		"hour": "04",
+		"min": "54",
+		"tzname": "UTC"
+		},
+		"tempm":"10.0", "tempi":"50.0","dewptm":"8.3", "dewpti":"46.9","hum":"89","wspdm":"24.1", "wspdi":"15.0","wgustm":"-9999.0", "wgusti":"-9999.0","wdird":"50","wdire":"NE","vism":"16.1", "visi":"10.0","pressurem":"1013.9", "pressurei":"29.94","windchillm":"-999", "windchilli":"-999","heatindexm":"-9999", "heatindexi":"-9999","precipm":"0.3", "precipi":"0.01","conds":"Overcast","icon":"cloudy","fog":"0","rain":"0","snow":"0","hail":"0","thunder":"0","tornado":"0","metar":"METAR KBOS 280454Z 05013KT 10SM OVC009 10/08 A2994 RMK AO2 RAE50 SLP139 P0001 T01000083 402330100" },
+		{
+		"date": {
+		"pretty": "1:54 AM EDT on May 28, 2014",
+		"year": "2014",
+		"mon": "05",
+		"mday": "28",
+		"hour": "01",
+		"min": "54",
+		"tzname": "America/New_York"
+		},
+		"utcdate": {
+		"pretty": "5:54 AM GMT on May 28, 2014",
+		"year": "2014",
+		"mon": "05",
+		"mday": "28",
+		"hour": "05",
+		"min": "54",
+		"tzname": "UTC"
+		},
+		"tempm":"10.0", "tempi":"50.0","dewptm":"8.3", "dewpti":"46.9","hum":"89","wspdm":"24.1", "wspdi":"15.0","wgustm":"-9999.0", "wgusti":"-9999.0","wdird":"50","wdire":"NE","vism":"16.1", "visi":"10.0","pressurem":"1013.7", "pressurei":"29.94","windchillm":"-999", "windchilli":"-999","heatindexm":"-9999", "heatindexi":"-9999","precipm":"0.0", "precipi":"0.00","conds":"Light Rain","icon":"rain","fog":"0","rain":"1","snow":"0","hail":"0","thunder":"0","tornado":"0","metar":"METAR KBOS 280554Z 05013KT 10SM -RA OVC009 10/08 A2994 RMK AO2 RAB12 SLP137 P0000 60048 T01000083 10106 20100 58005" },
+		{
+		"date": {
+		"pretty": "2:54 AM EDT on May 28, 2014",
+		"year": "2014",
+		"mon": "05",
+		"mday": "28",
+		"hour": "02",
+		"min": "54",
+		"tzname": "America/New_York"
+		},
+		"utcdate": {
+		"pretty": "6:54 AM GMT on May 28, 2014",
+		"year": "2014",
+		"mon": "05",
+		"mday": "28",
+		"hour": "06",
+		"min": "54",
+		"tzname": "UTC"
+		},
+		"tempm":"10.0", "tempi":"50.0","dewptm":"8.3", "dewpti":"46.9","hum":"89","wspdm":"16.7", "wspdi":"10.4","wgustm":"-9999.0", "wgusti":"-9999.0","wdird":"40","wdire":"NE","vism":"8.0", "visi":"5.0","pressurem":"1014.0", "pressurei":"29.95","windchillm":"-999", "windchilli":"-999","heatindexm":"-9999", "heatindexi":"-9999","precipm":"-9999.00", "precipi":"-9999.00","conds":"Overcast","icon":"cloudy","fog":"0","rain":"0","snow":"0","hail":"0","thunder":"0","tornado":"0","metar":"METAR KBOS 280654Z 04009KT 5SM BR OVC007 10/08 A2995 RMK AO2 RAE0555 SLP140 T01000083" },
+		{
+		"date": {
+		"pretty": "3:17 AM EDT on May 28, 2014",
+		"year": "2014",
+		"mon": "05",
+		"mday": "28",
+		"hour": "03",
+		"min": "17",
+		"tzname": "America/New_York"
+		},
+		"utcdate": {
+		"pretty": "7:17 AM GMT on May 28, 2014",
+		"year": "2014",
+		"mon": "05",
+		"mday": "28",
+		"hour": "07",
+		"min": "17",
+		"tzname": "UTC"
+		},
+		"tempm":"10.0", "tempi":"50.0","dewptm":"8.0", "dewpti":"46.4","hum":"87","wspdm":"16.7", "wspdi":"10.4","wgustm":"-9999.0", "wgusti":"-9999.0","wdird":"40","wdire":"NE","vism":"4.0", "visi":"2.5","pressurem":"1014.1", "pressurei":"29.95","windchillm":"-999", "windchilli":"-999","heatindexm":"-9999", "heatindexi":"-9999","precipm":"0.0", "precipi":"0.00","conds":"Light Rain","icon":"rain","fog":"0","rain":"1","snow":"0","hail":"0","thunder":"0","tornado":"0","metar":"SPECI KBOS 280717Z 04009KT 2 1/2SM -RA BR OVC007 10/08 A2995 RMK AO2 RAB05 P0000" },
+		{
+		"date": {
+		"pretty": "3:54 AM EDT on May 28, 2014",
+		"year": "2014",
+		"mon": "05",
+		"mday": "28",
+		"hour": "03",
+		"min": "54",
+		"tzname": "America/New_York"
+		},
+		"utcdate": {
+		"pretty": "7:54 AM GMT on May 28, 2014",
+		"year": "2014",
+		"mon": "05",
+		"mday": "28",
+		"hour": "07",
+		"min": "54",
+		"tzname": "UTC"
+		},
+		"tempm":"10.0", "tempi":"50.0","dewptm":"8.3", "dewpti":"46.9","hum":"89","wspdm":"27.8", "wspdi":"17.3","wgustm":"-9999.0", "wgusti":"-9999.0","wdird":"50","wdire":"NE","vism":"4.0", "visi":"2.5","pressurem":"1012.5", "pressurei":"29.90","windchillm":"-999", "windchilli":"-999","heatindexm":"-9999", "heatindexi":"-9999","precipm":"0.5", "precipi":"0.02","conds":"Light Rain","icon":"rain","fog":"0","rain":"1","snow":"0","hail":"0","thunder":"0","tornado":"0","metar":"METAR KBOS 280754Z 05015KT 2 1/2SM -RA BR BKN005 OVC011 10/08 A2990 RMK AO2 RAB05 PRESFR SLP125 P0002 T01000083" },
+		{
+		"date": {
+		"pretty": "4:07 AM EDT on May 28, 2014",
+		"year": "2014",
+		"mon": "05",
+		"mday": "28",
+		"hour": "04",
+		"min": "07",
+		"tzname": "America/New_York"
+		},
+		"utcdate": {
+		"pretty": "8:07 AM GMT on May 28, 2014",
+		"year": "2014",
+		"mon": "05",
+		"mday": "28",
+		"hour": "08",
+		"min": "07",
+		"tzname": "UTC"
+		},
+		"tempm":"10.0", "tempi":"50.0","dewptm":"8.0", "dewpti":"46.4","hum":"87","wspdm":"22.2", "wspdi":"13.8","wgustm":"38.9", "wgusti":"24.2","wdird":"40","wdire":"NE","vism":"4.8", "visi":"3.0","pressurem":"1013.1", "pressurei":"29.92","windchillm":"-999", "windchilli":"-999","heatindexm":"-9999", "heatindexi":"-9999","precipm":"0.5", "precipi":"0.02","conds":"Rain","icon":"rain","fog":"0","rain":"1","snow":"0","hail":"0","thunder":"0","tornado":"0","metar":"SPECI KBOS 280807Z 04012G21KT 3SM RA BR OVC005 10/08 A2992 RMK AO2 P0002" },
+		{
+		"date": {
+		"pretty": "4:54 AM EDT on May 28, 2014",
+		"year": "2014",
+		"mon": "05",
+		"mday": "28",
+		"hour": "04",
+		"min": "54",
+		"tzname": "America/New_York"
+		},
+		"utcdate": {
+		"pretty": "8:54 AM GMT on May 28, 2014",
+		"year": "2014",
+		"mon": "05",
+		"mday": "28",
+		"hour": "08",
+		"min": "54",
+		"tzname": "UTC"
+		},
+		"tempm":"10.0", "tempi":"50.0","dewptm":"8.3", "dewpti":"46.9","hum":"89","wspdm":"29.6", "wspdi":"18.4","wgustm":"-9999.0", "wgusti":"-9999.0","wdird":"60","wdire":"ENE","vism":"16.1", "visi":"10.0","pressurem":"1013.5", "pressurei":"29.93","windchillm":"-999", "windchilli":"-999","heatindexm":"-9999", "heatindexi":"-9999","precipm":"0.8", "precipi":"0.03","conds":"Overcast","icon":"cloudy","fog":"0","rain":"0","snow":"0","hail":"0","thunder":"0","tornado":"0","metar":"METAR KBOS 280854Z 06016KT 10SM BKN009 OVC014 10/08 A2993 RMK AO2 RAE40 SLP135 P0003 60005 T01000083 55002" },
+		{
+		"date": {
+		"pretty": "5:46 AM EDT on May 28, 2014",
+		"year": "2014",
+		"mon": "05",
+		"mday": "28",
+		"hour": "05",
+		"min": "46",
+		"tzname": "America/New_York"
+		},
+		"utcdate": {
+		"pretty": "9:46 AM GMT on May 28, 2014",
+		"year": "2014",
+		"mon": "05",
+		"mday": "28",
+		"hour": "09",
+		"min": "46",
+		"tzname": "UTC"
+		},
+		"tempm":"10.0", "tempi":"50.0","dewptm":"8.0", "dewpti":"46.4","hum":"87","wspdm":"25.9", "wspdi":"16.1","wgustm":"-9999.0", "wgusti":"-9999.0","wdird":"50","wdire":"NE","vism":"4.0", "visi":"2.5","pressurem":"1014.4", "pressurei":"29.96","windchillm":"-999", "windchilli":"-999","heatindexm":"-9999", "heatindexi":"-9999","precipm":"0.0", "precipi":"0.00","conds":"Light Drizzle","icon":"rain","fog":"0","rain":"0","snow":"0","hail":"0","thunder":"0","tornado":"0","metar":"SPECI KBOS 280946Z 05014KT 2 1/2SM R04R/6000VP6000FT -DZ BR BKN007 OVC014 10/08 A2996 RMK AO2 SFC VIS 3 RAB08E17B44E45DZB45 P0000" },
+		{
+		"date": {
+		"pretty": "5:54 AM EDT on May 28, 2014",
+		"year": "2014",
+		"mon": "05",
+		"mday": "28",
+		"hour": "05",
+		"min": "54",
+		"tzname": "America/New_York"
+		},
+		"utcdate": {
+		"pretty": "9:54 AM GMT on May 28, 2014",
+		"year": "2014",
+		"mon": "05",
+		"mday": "28",
+		"hour": "09",
+		"min": "54",
+		"tzname": "UTC"
+		},
+		"tempm":"10.0", "tempi":"50.0","dewptm":"8.3", "dewpti":"46.9","hum":"89","wspdm":"25.9", "wspdi":"16.1","wgustm":"-9999.0", "wgusti":"-9999.0","wdird":"60","wdire":"ENE","vism":"2.8", "visi":"1.8","pressurem":"1014.3", "pressurei":"29.96","windchillm":"-999", "windchilli":"-999","heatindexm":"-9999", "heatindexi":"-9999","precipm":"0.0", "precipi":"0.00","conds":"Light Drizzle","icon":"rain","fog":"0","rain":"0","snow":"0","hail":"0","thunder":"0","tornado":"0","metar":"METAR KBOS 280954Z 06014KT 1 3/4SM R04R/6000VP6000FT -DZ BR BKN007 OVC014 10/08 A2996 RMK AO2 TWR VIS 2 1/2 RAB08E17B44E45DZB45 SLP143 P0000 T01000083" },
+		{
+		"date": {
+		"pretty": "6:42 AM EDT on May 28, 2014",
+		"year": "2014",
+		"mon": "05",
+		"mday": "28",
+		"hour": "06",
+		"min": "42",
+		"tzname": "America/New_York"
+		},
+		"utcdate": {
+		"pretty": "10:42 AM GMT on May 28, 2014",
+		"year": "2014",
+		"mon": "05",
+		"mday": "28",
+		"hour": "10",
+		"min": "42",
+		"tzname": "UTC"
+		},
+		"tempm":"10.0", "tempi":"50.0","dewptm":"9.0", "dewpti":"48.2","hum":"94","wspdm":"22.2", "wspdi":"13.8","wgustm":"-9999.0", "wgusti":"-9999.0","wdird":"50","wdire":"NE","vism":"3.2", "visi":"2.0","pressurem":"1014.4", "pressurei":"29.96","windchillm":"-999", "windchilli":"-999","heatindexm":"-9999", "heatindexi":"-9999","precipm":"0.3", "precipi":"0.01","conds":"Light Rain","icon":"rain","fog":"0","rain":"1","snow":"0","hail":"0","thunder":"0","tornado":"0","metar":"SPECI KBOS 281042Z 05012KT 2SM -RA BR BKN007 OVC011 10/09 A2996 RMK AO2 TWR VIS 2 1/2 DZE16RAB16 P0001" },
+		{
+		"date": {
+		"pretty": "6:54 AM EDT on May 28, 2014",
+		"year": "2014",
+		"mon": "05",
+		"mday": "28",
+		"hour": "06",
+		"min": "54",
+		"tzname": "America/New_York"
+		},
+		"utcdate": {
+		"pretty": "10:54 AM GMT on May 28, 2014",
+		"year": "2014",
+		"mon": "05",
+		"mday": "28",
+		"hour": "10",
+		"min": "54",
+		"tzname": "UTC"
+		},
+		"tempm":"10.0", "tempi":"50.0","dewptm":"8.9", "dewpti":"48.0","hum":"93","wspdm":"24.1", "wspdi":"15.0","wgustm":"-9999.0", "wgusti":"-9999.0","wdird":"50","wdire":"NE","vism":"4.0", "visi":"2.5","pressurem":"1014.9", "pressurei":"29.97","windchillm":"-999", "windchilli":"-999","heatindexm":"-9999", "heatindexi":"-9999","precipm":"0.5", "precipi":"0.02","conds":"Light Drizzle","icon":"rain","fog":"0","rain":"0","snow":"0","hail":"0","thunder":"0","tornado":"0","metar":"METAR KBOS 281054Z 05013KT 2 1/2SM -DZ BR BKN007 OVC011 10/09 A2997 RMK AO2 SFC VIS 3 DZE16B49RAB16E49 SLP149 P0002 T01000089" },
+		{
+		"date": {
+		"pretty": "7:54 AM EDT on May 28, 2014",
+		"year": "2014",
+		"mon": "05",
+		"mday": "28",
+		"hour": "07",
+		"min": "54",
+		"tzname": "America/New_York"
+		},
+		"utcdate": {
+		"pretty": "11:54 AM GMT on May 28, 2014",
+		"year": "2014",
+		"mon": "05",
+		"mday": "28",
+		"hour": "11",
+		"min": "54",
+		"tzname": "UTC"
+		},
+		"tempm":"10.0", "tempi":"50.0","dewptm":"8.9", "dewpti":"48.0","hum":"93","wspdm":"25.9", "wspdi":"16.1","wgustm":"-9999.0", "wgusti":"-9999.0","wdird":"50","wdire":"NE","vism":"4.0", "visi":"2.5","pressurem":"1015.4", "pressurei":"29.99","windchillm":"-999", "windchilli":"-999","heatindexm":"-9999", "heatindexi":"-9999","precipm":"0.0", "precipi":"0.00","conds":"Light Drizzle","icon":"rain","fog":"0","rain":"0","snow":"0","hail":"0","thunder":"0","tornado":"0","metar":"METAR KBOS 281154Z 05014KT 2 1/2SM -DZ BR BKN007 OVC011 10/09 A2999 RMK AO2 DZE13B46 SLP154 P0000 60007 70055 T01000089 10100 20100 51020" },
+		{
+		"date": {
+		"pretty": "8:20 AM EDT on May 28, 2014",
+		"year": "2014",
+		"mon": "05",
+		"mday": "28",
+		"hour": "08",
+		"min": "20",
+		"tzname": "America/New_York"
+		},
+		"utcdate": {
+		"pretty": "12:20 PM GMT on May 28, 2014",
+		"year": "2014",
+		"mon": "05",
+		"mday": "28",
+		"hour": "12",
+		"min": "20",
+		"tzname": "UTC"
+		},
+		"tempm":"10.0", "tempi":"50.0","dewptm":"9.0", "dewpti":"48.2","hum":"94","wspdm":"25.9", "wspdi":"16.1","wgustm":"-9999.0", "wgusti":"-9999.0","wdird":"60","wdire":"ENE","vism":"2.8", "visi":"1.8","pressurem":"1015.5", "pressurei":"29.99","windchillm":"-999", "windchilli":"-999","heatindexm":"-9999", "heatindexi":"-9999","precipm":"0.0", "precipi":"0.00","conds":"Light Drizzle","icon":"rain","fog":"0","rain":"0","snow":"0","hail":"0","thunder":"0","tornado":"0","metar":"SPECI KBOS 281220Z 06014KT 1 3/4SM R04R/6000VP6000FT -DZ BR BKN007 OVC011 10/09 A2999 RMK AO2 TWR VIS 2 1/2 P0000" },
+		{
+		"date": {
+		"pretty": "8:54 AM EDT on May 28, 2014",
+		"year": "2014",
+		"mon": "05",
+		"mday": "28",
+		"hour": "08",
+		"min": "54",
+		"tzname": "America/New_York"
+		},
+		"utcdate": {
+		"pretty": "12:54 PM GMT on May 28, 2014",
+		"year": "2014",
+		"mon": "05",
+		"mday": "28",
+		"hour": "12",
+		"min": "54",
+		"tzname": "UTC"
+		},
+		"tempm":"10.0", "tempi":"50.0","dewptm":"9.0", "dewpti":"48.2","hum":"94","wspdm":"24.1", "wspdi":"15.0","wgustm":"-9999.0", "wgusti":"-9999.0","wdird":"40","wdire":"NE","vism":"4.0", "visi":"2.5","pressurem":"1016.1", "pressurei":"30.01","windchillm":"-999", "windchilli":"-999","heatindexm":"-9999", "heatindexi":"-9999","precipm":"-9999.00", "precipi":"-9999.00","conds":"Light Drizzle","icon":"rain","fog":"0","rain":"0","snow":"0","hail":"0","thunder":"0","tornado":"0","metar":"METAR KBOS 281254Z 04013KT 2 1/2SM R04R/5500VP6000FT -DZ BR BKN005 OVC015 10/09 A3001" },
+		{
+		"date": {
+		"pretty": "9:24 AM EDT on May 28, 2014",
+		"year": "2014",
+		"mon": "05",
+		"mday": "28",
+		"hour": "09",
+		"min": "24",
+		"tzname": "America/New_York"
+		},
+		"utcdate": {
+		"pretty": "1:24 PM GMT on May 28, 2014",
+		"year": "2014",
+		"mon": "05",
+		"mday": "28",
+		"hour": "13",
+		"min": "24",
+		"tzname": "UTC"
+		},
+		"tempm":"10.0", "tempi":"50.0","dewptm":"9.0", "dewpti":"48.2","hum":"94","wspdm":"25.9", "wspdi":"16.1","wgustm":"-9999.0", "wgusti":"-9999.0","wdird":"50","wdire":"NE","vism":"2.4", "visi":"1.5","pressurem":"1016.1", "pressurei":"30.01","windchillm":"-999", "windchilli":"-999","heatindexm":"-9999", "heatindexi":"-9999","precipm":"0.0", "precipi":"0.00","conds":"Light Drizzle","icon":"rain","fog":"0","rain":"0","snow":"0","hail":"0","thunder":"0","tornado":"0","metar":"SPECI KBOS 281324Z 05014KT 1 1/2SM R04R/4000V6000FT -DZ BR BKN007 OVC014 10/09 A3001 RMK AO2 TWR VIS 2 1/2 P0000" },
+		{
+		"date": {
+		"pretty": "9:54 AM EDT on May 28, 2014",
+		"year": "2014",
+		"mon": "05",
+		"mday": "28",
+		"hour": "09",
+		"min": "54",
+		"tzname": "America/New_York"
+		},
+		"utcdate": {
+		"pretty": "1:54 PM GMT on May 28, 2014",
+		"year": "2014",
+		"mon": "05",
+		"mday": "28",
+		"hour": "13",
+		"min": "54",
+		"tzname": "UTC"
+		},
+		"tempm":"10.0", "tempi":"50.0","dewptm":"8.3", "dewpti":"46.9","hum":"89","wspdm":"27.8", "wspdi":"17.3","wgustm":"38.9", "wgusti":"24.2","wdird":"50","wdire":"NE","vism":"2.4", "visi":"1.5","pressurem":"1016.8", "pressurei":"30.03","windchillm":"-999", "windchilli":"-999","heatindexm":"-9999", "heatindexi":"-9999","precipm":"0.3", "precipi":"0.01","conds":"Light Drizzle","icon":"rain","fog":"0","rain":"0","snow":"0","hail":"0","thunder":"0","tornado":"0","metar":"METAR KBOS 281354Z 05015G21KT 1 1/2SM R04R/5500VP6000FT -DZ BR SCT005 BKN012 OVC019 10/08 A3003 RMK AO2 TWR VIS 2 1/2 CIG 007 E SLP168 P0001 T01000083" },
+		{
+		"date": {
+		"pretty": "10:02 AM EDT on May 28, 2014",
+		"year": "2014",
+		"mon": "05",
+		"mday": "28",
+		"hour": "10",
+		"min": "02",
+		"tzname": "America/New_York"
+		},
+		"utcdate": {
+		"pretty": "2:02 PM GMT on May 28, 2014",
+		"year": "2014",
+		"mon": "05",
+		"mday": "28",
+		"hour": "14",
+		"min": "02",
+		"tzname": "UTC"
+		},
+		"tempm":"10.0", "tempi":"50.0","dewptm":"9.0", "dewpti":"48.2","hum":"94","wspdm":"29.6", "wspdi":"18.4","wgustm":"38.9", "wgusti":"24.2","wdird":"60","wdire":"ENE","vism":"2.8", "visi":"1.8","pressurem":"1016.8", "pressurei":"30.03","windchillm":"-999", "windchilli":"-999","heatindexm":"-9999", "heatindexi":"-9999","precipm":"0.0", "precipi":"0.00","conds":"Light Drizzle","icon":"rain","fog":"0","rain":"0","snow":"0","hail":"0","thunder":"0","tornado":"0","metar":"SPECI KBOS 281402Z 06016G21KT 1 3/4SM R04R/5000VP6000FT -DZ BR BKN005 BKN011 OVC021 10/09 A3003 RMK AO2 TWR VIS 2 1/2 P0000" },
+		{
+		"date": {
+		"pretty": "10:52 AM EDT on May 28, 2014",
+		"year": "2014",
+		"mon": "05",
+		"mday": "28",
+		"hour": "10",
+		"min": "52",
+		"tzname": "America/New_York"
+		},
+		"utcdate": {
+		"pretty": "2:52 PM GMT on May 28, 2014",
+		"year": "2014",
+		"mon": "05",
+		"mday": "28",
+		"hour": "14",
+		"min": "52",
+		"tzname": "UTC"
+		},
+		"tempm":"10.0", "tempi":"50.0","dewptm":"8.0", "dewpti":"46.4","hum":"87","wspdm":"29.6", "wspdi":"18.4","wgustm":"37.0", "wgusti":"23.0","wdird":"40","wdire":"NE","vism":"4.0", "visi":"2.5","pressurem":"1017.5", "pressurei":"30.05","windchillm":"-999", "windchilli":"-999","heatindexm":"-9999", "heatindexi":"-9999","precipm":"0.0", "precipi":"0.00","conds":"Overcast","icon":"cloudy","fog":"0","rain":"0","snow":"0","hail":"0","thunder":"0","tornado":"0","metar":"SPECI KBOS 281452Z 04016G20KT 2 1/2SM BKN010 OVC023 10/08 A3005 RMK AO2 SFC VIS 10 DZE46 P0000" },
+		{
+		"date": {
+		"pretty": "10:54 AM EDT on May 28, 2014",
+		"year": "2014",
+		"mon": "05",
+		"mday": "28",
+		"hour": "10",
+		"min": "54",
+		"tzname": "America/New_York"
+		},
+		"utcdate": {
+		"pretty": "2:54 PM GMT on May 28, 2014",
+		"year": "2014",
+		"mon": "05",
+		"mday": "28",
+		"hour": "14",
+		"min": "54",
+		"tzname": "UTC"
+		},
+		"tempm":"10.0", "tempi":"50.0","dewptm":"8.3", "dewpti":"46.9","hum":"89","wspdm":"24.1", "wspdi":"15.0","wgustm":"37.0", "wgusti":"23.0","wdird":"50","wdire":"NE","vism":"4.0", "visi":"2.5","pressurem":"1017.5", "pressurei":"30.05","windchillm":"-999", "windchilli":"-999","heatindexm":"-9999", "heatindexi":"-9999","precipm":"0.0", "precipi":"0.00","conds":"Overcast","icon":"cloudy","fog":"0","rain":"0","snow":"0","hail":"0","thunder":"0","tornado":"0","metar":"METAR KBOS 281454Z 05013G20KT 2 1/2SM BKN010 BKN015 OVC023 10/08 A3005 RMK AO2 SFC VIS 10 DZE46 SLP175 P0000 60001 T01000083 50013" },
+		{
+		"date": {
+		"pretty": "11:54 AM EDT on May 28, 2014",
+		"year": "2014",
+		"mon": "05",
+		"mday": "28",
+		"hour": "11",
+		"min": "54",
+		"tzname": "America/New_York"
+		},
+		"utcdate": {
+		"pretty": "3:54 PM GMT on May 28, 2014",
+		"year": "2014",
+		"mon": "05",
+		"mday": "28",
+		"hour": "15",
+		"min": "54",
+		"tzname": "UTC"
+		},
+		"tempm":"10.0", "tempi":"50.0","dewptm":"8.3", "dewpti":"46.9","hum":"89","wspdm":"29.6", "wspdi":"18.4","wgustm":"38.9", "wgusti":"24.2","wdird":"40","wdire":"NE","vism":"4.0", "visi":"2.5","pressurem":"1018.1", "pressurei":"30.07","windchillm":"-999", "windchilli":"-999","heatindexm":"-9999", "heatindexi":"-9999","precipm":"0.0", "precipi":"0.00","conds":"Light Drizzle","icon":"rain","fog":"0","rain":"0","snow":"0","hail":"0","thunder":"0","tornado":"0","metar":"METAR KBOS 281554Z 04016G21KT 2 1/2SM -DZ BR BKN010 OVC015 10/08 A3007 RMK AO2 SFC VIS 4 RAB18E41DZB41 SLP181 P0000 T01000083" },
+		{
+		"date": {
+		"pretty": "12:31 PM EDT on May 28, 2014",
+		"year": "2014",
+		"mon": "05",
+		"mday": "28",
+		"hour": "12",
+		"min": "31",
+		"tzname": "America/New_York"
+		},
+		"utcdate": {
+		"pretty": "4:31 PM GMT on May 28, 2014",
+		"year": "2014",
+		"mon": "05",
+		"mday": "28",
+		"hour": "16",
+		"min": "31",
+		"tzname": "UTC"
+		},
+		"tempm":"10.0", "tempi":"50.0","dewptm":"8.0", "dewpti":"46.4","hum":"87","wspdm":"33.3", "wspdi":"20.7","wgustm":"44.4", "wgusti":"27.6","wdird":"50","wdire":"NE","vism":"4.0", "visi":"2.5","pressurem":"1018.2", "pressurei":"30.07","windchillm":"-999", "windchilli":"-999","heatindexm":"-9999", "heatindexi":"-9999","precipm":"0.0", "precipi":"0.00","conds":"Light Drizzle","icon":"rain","fog":"0","rain":"0","snow":"0","hail":"0","thunder":"0","tornado":"0","metar":"SPECI KBOS 281631Z 05018G24KT 2 1/2SM -DZ SCT010 OVC016 10/08 A3007 RMK AO2 PK WND 04027/1610 SFC VIS 10 P0000" },
+		{
+		"date": {
+		"pretty": "12:51 PM EDT on May 28, 2014",
+		"year": "2014",
+		"mon": "05",
+		"mday": "28",
+		"hour": "12",
+		"min": "51",
+		"tzname": "America/New_York"
+		},
+		"utcdate": {
+		"pretty": "4:51 PM GMT on May 28, 2014",
+		"year": "2014",
+		"mon": "05",
+		"mday": "28",
+		"hour": "16",
+		"min": "51",
+		"tzname": "UTC"
+		},
+		"tempm":"10.0", "tempi":"50.0","dewptm":"8.0", "dewpti":"46.4","hum":"87","wspdm":"33.3", "wspdi":"20.7","wgustm":"46.3", "wgusti":"28.8","wdird":"40","wdire":"NE","vism":"4.0", "visi":"2.5","pressurem":"1018.5", "pressurei":"30.08","windchillm":"-999", "windchilli":"-999","heatindexm":"-9999", "heatindexi":"-9999","precipm":"0.0", "precipi":"0.00","conds":"Overcast","icon":"cloudy","fog":"0","rain":"0","snow":"0","hail":"0","thunder":"0","tornado":"0","metar":"SPECI KBOS 281651Z 04018G25KT 2 1/2SM OVC012 10/08 A3008 RMK AO2 PK WND 04027/1610 SFC VIS 9 DZE39 P0000" },
+		{
+		"date": {
+		"pretty": "12:54 PM EDT on May 28, 2014",
+		"year": "2014",
+		"mon": "05",
+		"mday": "28",
+		"hour": "12",
+		"min": "54",
+		"tzname": "America/New_York"
+		},
+		"utcdate": {
+		"pretty": "4:54 PM GMT on May 28, 2014",
+		"year": "2014",
+		"mon": "05",
+		"mday": "28",
+		"hour": "16",
+		"min": "54",
+		"tzname": "UTC"
+		},
+		"tempm":"9.4", "tempi":"48.9","dewptm":"7.8", "dewpti":"46.0","hum":"90","wspdm":"35.2", "wspdi":"21.9","wgustm":"-9999.0", "wgusti":"-9999.0","wdird":"40","wdire":"NE","vism":"4.0", "visi":"2.5","pressurem":"1018.7", "pressurei":"30.09","windchillm":"-999", "windchilli":"-999","heatindexm":"-9999", "heatindexi":"-9999","precipm":"0.0", "precipi":"0.00","conds":"Overcast","icon":"cloudy","fog":"0","rain":"0","snow":"0","hail":"0","thunder":"0","tornado":"0","metar":"METAR KBOS 281654Z 04019KT 2 1/2SM OVC012 09/08 A3008 RMK AO2 PK WND 04027/1610 SFC VIS 8 DZE39 SLP187 P0000 T00940078" },
+		{
+		"date": {
+		"pretty": "1:54 PM EDT on May 28, 2014",
+		"year": "2014",
+		"mon": "05",
+		"mday": "28",
+		"hour": "13",
+		"min": "54",
+		"tzname": "America/New_York"
+		},
+		"utcdate": {
+		"pretty": "5:54 PM GMT on May 28, 2014",
+		"year": "2014",
+		"mon": "05",
+		"mday": "28",
+		"hour": "17",
+		"min": "54",
+		"tzname": "UTC"
+		},
+		"tempm":"9.4", "tempi":"48.9","dewptm":"7.2", "dewpti":"45.0","hum":"86","wspdm":"37.0", "wspdi":"23.0","wgustm":"50.0", "wgusti":"31.1","wdird":"50","wdire":"NE","vism":"4.0", "visi":"2.5","pressurem":"1019.4", "pressurei":"30.11","windchillm":"-999", "windchilli":"-999","heatindexm":"-9999", "heatindexi":"-9999","precipm":"-9999.00", "precipi":"-9999.00","conds":"Overcast","icon":"cloudy","fog":"0","rain":"0","snow":"0","hail":"0","thunder":"0","tornado":"0","metar":"METAR KBOS 281754Z 05020G27KT 2 1/2SM OVC012 09/07 A3011 RMK AO2 PK WND 05027/1754 SFC VIS 8 SLP194 60001 T00940072 10100 20094 53013" },
+		{
+		"date": {
+		"pretty": "2:05 PM EDT on May 28, 2014",
+		"year": "2014",
+		"mon": "05",
+		"mday": "28",
+		"hour": "14",
+		"min": "05",
+		"tzname": "America/New_York"
+		},
+		"utcdate": {
+		"pretty": "6:05 PM GMT on May 28, 2014",
+		"year": "2014",
+		"mon": "05",
+		"mday": "28",
+		"hour": "18",
+		"min": "05",
+		"tzname": "UTC"
+		},
+		"tempm":"9.0", "tempi":"48.2","dewptm":"7.0", "dewpti":"44.6","hum":"87","wspdm":"27.8", "wspdi":"17.3","wgustm":"44.4", "wgusti":"27.6","wdird":"40","wdire":"NE","vism":"14.5", "visi":"9.0","pressurem":"1019.5", "pressurei":"30.11","windchillm":"-999", "windchilli":"-999","heatindexm":"-9999", "heatindexi":"-9999","precipm":"-9999.00", "precipi":"-9999.00","conds":"Overcast","icon":"cloudy","fog":"0","rain":"0","snow":"0","hail":"0","thunder":"0","tornado":"0","metar":"SPECI KBOS 281805Z 04015G24KT 9SM OVC012 09/07 A3011 RMK AO2" },
+		{
+		"date": {
+		"pretty": "2:54 PM EDT on May 28, 2014",
+		"year": "2014",
+		"mon": "05",
+		"mday": "28",
+		"hour": "14",
+		"min": "54",
+		"tzname": "America/New_York"
+		},
+		"utcdate": {
+		"pretty": "6:54 PM GMT on May 28, 2014",
+		"year": "2014",
+		"mon": "05",
+		"mday": "28",
+		"hour": "18",
+		"min": "54",
+		"tzname": "UTC"
+		},
+		"tempm":"8.9", "tempi":"48.0","dewptm":"7.2", "dewpti":"45.0","hum":"89","wspdm":"33.3", "wspdi":"20.7","wgustm":"46.3", "wgusti":"28.8","wdird":"40","wdire":"NE","vism":"4.8", "visi":"3.0","pressurem":"1020.1", "pressurei":"30.13","windchillm":"-999", "windchilli":"-999","heatindexm":"-9999", "heatindexi":"-9999","precipm":"0.0", "precipi":"0.00","conds":"Light Drizzle","icon":"rain","fog":"0","rain":"0","snow":"0","hail":"0","thunder":"0","tornado":"0","metar":"METAR KBOS 281854Z 04018G25KT 3SM -DZ BR OVC010 09/07 A3013 RMK AO2 SFC VIS 5 RAB34E49DZB52 SLP201 P0000 T00890072" },
+		{
+		"date": {
+		"pretty": "3:54 PM EDT on May 28, 2014",
+		"year": "2014",
+		"mon": "05",
+		"mday": "28",
+		"hour": "15",
+		"min": "54",
+		"tzname": "America/New_York"
+		},
+		"utcdate": {
+		"pretty": "7:54 PM GMT on May 28, 2014",
+		"year": "2014",
+		"mon": "05",
+		"mday": "28",
+		"hour": "19",
+		"min": "54",
+		"tzname": "UTC"
+		},
+		"tempm":"8.9", "tempi":"48.0","dewptm":"7.2", "dewpti":"45.0","hum":"89","wspdm":"29.6", "wspdi":"18.4","wgustm":"37.0", "wgusti":"23.0","wdird":"40","wdire":"NE","vism":"4.8", "visi":"3.0","pressurem":"1020.8", "pressurei":"30.15","windchillm":"-999", "windchilli":"-999","heatindexm":"-9999", "heatindexi":"-9999","precipm":"0.0", "precipi":"0.00","conds":"Overcast","icon":"cloudy","fog":"0","rain":"0","snow":"0","hail":"0","thunder":"0","tornado":"0","metar":"METAR KBOS 281954Z 04016G20KT 3SM BR OVC010 09/07 A3015 RMK AO2 SFC VIS 6 DZE12 SLP208 P0000 T00890072" },
+		{
+		"date": {
+		"pretty": "4:54 PM EDT on May 28, 2014",
+		"year": "2014",
+		"mon": "05",
+		"mday": "28",
+		"hour": "16",
+		"min": "54",
+		"tzname": "America/New_York"
+		},
+		"utcdate": {
+		"pretty": "8:54 PM GMT on May 28, 2014",
+		"year": "2014",
+		"mon": "05",
+		"mday": "28",
+		"hour": "20",
+		"min": "54",
+		"tzname": "UTC"
+		},
+		"tempm":"8.9", "tempi":"48.0","dewptm":"6.1", "dewpti":"43.0","hum":"83","wspdm":"25.9", "wspdi":"16.1","wgustm":"37.0", "wgusti":"23.0","wdird":"50","wdire":"NE","vism":"12.9", "visi":"8.0","pressurem":"1021.1", "pressurei":"30.16","windchillm":"-999", "windchilli":"-999","heatindexm":"-9999", "heatindexi":"-9999","precipm":"-9999.00", "precipi":"-9999.00","conds":"Overcast","icon":"cloudy","fog":"0","rain":"0","snow":"0","hail":"0","thunder":"0","tornado":"0","metar":"METAR KBOS 282054Z 05014G20KT 8SM OVC010 09/06 A3016 RMK AO2 SLP211 60000 T00890061 51017" },
+		{
+		"date": {
+		"pretty": "5:54 PM EDT on May 28, 2014",
+		"year": "2014",
+		"mon": "05",
+		"mday": "28",
+		"hour": "17",
+		"min": "54",
+		"tzname": "America/New_York"
+		},
+		"utcdate": {
+		"pretty": "9:54 PM GMT on May 28, 2014",
+		"year": "2014",
+		"mon": "05",
+		"mday": "28",
+		"hour": "21",
+		"min": "54",
+		"tzname": "UTC"
+		},
+		"tempm":"8.9", "tempi":"48.0","dewptm":"6.1", "dewpti":"43.0","hum":"83","wspdm":"24.1", "wspdi":"15.0","wgustm":"-9999.0", "wgusti":"-9999.0","wdird":"50","wdire":"NE","vism":"12.9", "visi":"8.0","pressurem":"1021.5", "pressurei":"30.17","windchillm":"-999", "windchilli":"-999","heatindexm":"-9999", "heatindexi":"-9999","precipm":"-9999.00", "precipi":"-9999.00","conds":"Overcast","icon":"cloudy","fog":"0","rain":"0","snow":"0","hail":"0","thunder":"0","tornado":"0","metar":"METAR KBOS 282154Z 05013KT 8SM OVC010 09/06 A3017 RMK AO2 SLP215 T00890061" },
+		{
+		"date": {
+		"pretty": "6:54 PM EDT on May 28, 2014",
+		"year": "2014",
+		"mon": "05",
+		"mday": "28",
+		"hour": "18",
+		"min": "54",
+		"tzname": "America/New_York"
+		},
+		"utcdate": {
+		"pretty": "10:54 PM GMT on May 28, 2014",
+		"year": "2014",
+		"mon": "05",
+		"mday": "28",
+		"hour": "22",
+		"min": "54",
+		"tzname": "UTC"
+		},
+		"tempm":"8.3", "tempi":"46.9","dewptm":"6.1", "dewpti":"43.0","hum":"86","wspdm":"24.1", "wspdi":"15.0","wgustm":"-9999.0", "wgusti":"-9999.0","wdird":"50","wdire":"NE","vism":"16.1", "visi":"10.0","pressurem":"1021.7", "pressurei":"30.17","windchillm":"-999", "windchilli":"-999","heatindexm":"-9999", "heatindexi":"-9999","precipm":"-9999.00", "precipi":"-9999.00","conds":"Overcast","icon":"cloudy","fog":"0","rain":"0","snow":"0","hail":"0","thunder":"0","tornado":"0","metar":"METAR KBOS 282254Z 05013KT 10SM OVC010 08/06 A3018 RMK AO2 SLP217 T00830061" },
+		{
+		"date": {
+		"pretty": "7:54 PM EDT on May 28, 2014",
+		"year": "2014",
+		"mon": "05",
+		"mday": "28",
+		"hour": "19",
+		"min": "54",
+		"tzname": "America/New_York"
+		},
+		"utcdate": {
+		"pretty": "11:54 PM GMT on May 28, 2014",
+		"year": "2014",
+		"mon": "05",
+		"mday": "28",
+		"hour": "23",
+		"min": "54",
+		"tzname": "UTC"
+		},
+		"tempm":"8.3", "tempi":"46.9","dewptm":"5.6", "dewpti":"42.1","hum":"83","wspdm":"22.2", "wspdi":"13.8","wgustm":"-9999.0", "wgusti":"-9999.0","wdird":"50","wdire":"NE","vism":"16.1", "visi":"10.0","pressurem":"1022.2", "pressurei":"30.19","windchillm":"-999", "windchilli":"-999","heatindexm":"-9999", "heatindexi":"-9999","precipm":"-9999.00", "precipi":"-9999.00","conds":"Overcast","icon":"cloudy","fog":"0","rain":"0","snow":"0","hail":"0","thunder":"0","tornado":"0","metar":"METAR KBOS 282354Z 05012KT 10SM FEW010 BKN014 OVC070 08/06 A3019 RMK AO2 SLP222 60000 T00830056 10094 20083 53011" },
+		{
+		"date": {
+		"pretty": "8:44 PM EDT on May 28, 2014",
+		"year": "2014",
+		"mon": "05",
+		"mday": "28",
+		"hour": "20",
+		"min": "44",
+		"tzname": "America/New_York"
+		},
+		"utcdate": {
+		"pretty": "12:44 AM GMT on May 29, 2014",
+		"year": "2014",
+		"mon": "05",
+		"mday": "29",
+		"hour": "00",
+		"min": "44",
+		"tzname": "UTC"
+		},
+		"tempm":"9.0", "tempi":"48.2","dewptm":"5.0", "dewpti":"41.0","hum":"76","wspdm":"16.7", "wspdi":"10.4","wgustm":"-9999.0", "wgusti":"-9999.0","wdird":"30","wdire":"NNE","vism":"16.1", "visi":"10.0","pressurem":"1022.6", "pressurei":"30.20","windchillm":"-999", "windchilli":"-999","heatindexm":"-9999", "heatindexi":"-9999","precipm":"-9999.00", "precipi":"-9999.00","conds":"Overcast","icon":"cloudy","fog":"0","rain":"0","snow":"0","hail":"0","thunder":"0","tornado":"0","metar":"SPECI KBOS 290044Z 03009KT 10SM FEW010 SCT014 OVC025 09/05 A3020 RMK AO2" },
+		{
+		"date": {
+		"pretty": "8:54 PM EDT on May 28, 2014",
+		"year": "2014",
+		"mon": "05",
+		"mday": "28",
+		"hour": "20",
+		"min": "54",
+		"tzname": "America/New_York"
+		},
+		"utcdate": {
+		"pretty": "12:54 AM GMT on May 29, 2014",
+		"year": "2014",
+		"mon": "05",
+		"mday": "29",
+		"hour": "00",
+		"min": "54",
+		"tzname": "UTC"
+		},
+		"tempm":"8.3", "tempi":"46.9","dewptm":"5.0", "dewpti":"41.0","hum":"80","wspdm":"18.5", "wspdi":"11.5","wgustm":"-9999.0", "wgusti":"-9999.0","wdird":"20","wdire":"NNE","vism":"16.1", "visi":"10.0","pressurem":"1022.6", "pressurei":"30.20","windchillm":"-999", "windchilli":"-999","heatindexm":"-9999", "heatindexi":"-9999","precipm":"-9999.00", "precipi":"-9999.00","conds":"Overcast","icon":"cloudy","fog":"0","rain":"0","snow":"0","hail":"0","thunder":"0","tornado":"0","metar":"METAR KBOS 290054Z 02010KT 10SM FEW010 SCT014 BKN025 OVC130 08/05 A3020 RMK AO2 SLP226 T00830050" },
+		{
+		"date": {
+		"pretty": "9:43 PM EDT on May 28, 2014",
+		"year": "2014",
+		"mon": "05",
+		"mday": "28",
+		"hour": "21",
+		"min": "43",
+		"tzname": "America/New_York"
+		},
+		"utcdate": {
+		"pretty": "1:43 AM GMT on May 29, 2014",
+		"year": "2014",
+		"mon": "05",
+		"mday": "29",
+		"hour": "01",
+		"min": "43",
+		"tzname": "UTC"
+		},
+		"tempm":"8.0", "tempi":"46.4","dewptm":"4.0", "dewpti":"39.2","hum":"76","wspdm":"18.5", "wspdi":"11.5","wgustm":"-9999.0", "wgusti":"-9999.0","wdird":"30","wdire":"NNE","vism":"16.1", "visi":"10.0","pressurem":"1023.2", "pressurei":"30.22","windchillm":"5.0", "windchilli":"41.1","heatindexm":"-9999", "heatindexi":"-9999","precipm":"-9999.00", "precipi":"-9999.00","conds":"Scattered Clouds","icon":"partlycloudy","fog":"0","rain":"0","snow":"0","hail":"0","thunder":"0","tornado":"0","metar":"SPECI KBOS 290143Z 03010KT 10SM FEW012 SCT025 08/04 A3022 RMK AO2" },
+		{
+		"date": {
+		"pretty": "9:54 PM EDT on May 28, 2014",
+		"year": "2014",
+		"mon": "05",
+		"mday": "28",
+		"hour": "21",
+		"min": "54",
+		"tzname": "America/New_York"
+		},
+		"utcdate": {
+		"pretty": "1:54 AM GMT on May 29, 2014",
+		"year": "2014",
+		"mon": "05",
+		"mday": "29",
+		"hour": "01",
+		"min": "54",
+		"tzname": "UTC"
+		},
+		"tempm":"7.8", "tempi":"46.0","dewptm":"3.9", "dewpti":"39.0","hum":"76","wspdm":"16.7", "wspdi":"10.4","wgustm":"-9999.0", "wgusti":"-9999.0","wdird":"40","wdire":"NE","vism":"16.1", "visi":"10.0","pressurem":"1023.2", "pressurei":"30.22","windchillm":"5.0", "windchilli":"41.0","heatindexm":"-9999", "heatindexi":"-9999","precipm":"-9999.00", "precipi":"-9999.00","conds":"Partly Cloudy","icon":"partlycloudy","fog":"0","rain":"0","snow":"0","hail":"0","thunder":"0","tornado":"0","metar":"METAR KBOS 290154Z 04009KT 10SM FEW030 08/04 A3022 RMK AO2 SLP232 T00780039" },
+		{
+		"date": {
+		"pretty": "10:54 PM EDT on May 28, 2014",
+		"year": "2014",
+		"mon": "05",
+		"mday": "28",
+		"hour": "22",
+		"min": "54",
+		"tzname": "America/New_York"
+		},
+		"utcdate": {
+		"pretty": "2:54 AM GMT on May 29, 2014",
+		"year": "2014",
+		"mon": "05",
+		"mday": "29",
+		"hour": "02",
+		"min": "54",
+		"tzname": "UTC"
+		},
+		"tempm":"7.8", "tempi":"46.0","dewptm":"3.9", "dewpti":"39.0","hum":"76","wspdm":"9.3", "wspdi":"5.8","wgustm":"-9999.0", "wgusti":"-9999.0","wdird":"340","wdire":"NNW","vism":"16.1", "visi":"10.0","pressurem":"1023.2", "pressurei":"30.22","windchillm":"6.2", "windchilli":"43.1","heatindexm":"-9999", "heatindexi":"-9999","precipm":"-9999.00", "precipi":"-9999.00","conds":"Clear","icon":"clear","fog":"0","rain":"0","snow":"0","hail":"0","thunder":"0","tornado":"0","metar":"METAR KBOS 290254Z 34005KT 10SM CLR 08/04 A3022 RMK AO2 SLP232 T00780039 50009" },
+		{
+		"date": {
+		"pretty": "11:54 PM EDT on May 28, 2014",
+		"year": "2014",
+		"mon": "05",
+		"mday": "28",
+		"hour": "23",
+		"min": "54",
+		"tzname": "America/New_York"
+		},
+		"utcdate": {
+		"pretty": "3:54 AM GMT on May 29, 2014",
+		"year": "2014",
+		"mon": "05",
+		"mday": "29",
+		"hour": "03",
+		"min": "54",
+		"tzname": "UTC"
+		},
+		"tempm":"7.2", "tempi":"45.0","dewptm":"4.4", "dewpti":"39.9","hum":"82","wspdm":"13.0", "wspdi":"8.1","wgustm":"-9999.0", "wgusti":"-9999.0","wdird":"330","wdire":"NNW","vism":"16.1", "visi":"10.0","pressurem":"1023.2", "pressurei":"30.22","windchillm":"4.8", "windchilli":"40.6","heatindexm":"-9999", "heatindexi":"-9999","precipm":"-9999.00", "precipi":"-9999.00","conds":"Clear","icon":"clear","fog":"0","rain":"0","snow":"0","hail":"0","thunder":"0","tornado":"0","metar":"METAR KBOS 290354Z 33007KT 10SM CLR 07/04 A3022 RMK AO2 SLP232 T00720044" }
+		],
+		"dailysummary": [
+		{ "date": {
+		"pretty": "12:00 PM EDT on May 28, 2014",
+		"year": "2014",
+		"mon": "05",
+		"mday": "28",
+		"hour": "12",
+		"min": "00",
+		"tzname": "America/New_York"
+		},
+		"fog":"0","rain":"1","snow":"0","snowfallm":"0.00", "snowfalli":"0.00","monthtodatesnowfallm":"0.00", "monthtodatesnowfalli":"0.00","since1julsnowfallm":"149.61", "since1julsnowfalli":"58.90","snowdepthm":"0.00", "snowdepthi":"0.00","hail":"0","thunder":"0","tornado":"0","meantempm":"8", "meantempi":"47","meandewptm":"7", "meandewpti":"45","meanpressurem":"1018", "meanpressurei":"30.06","meanwindspdm":"24", "meanwindspdi":"15","meanwdire":"","meanwdird":"43","meanvism":"9", "meanvisi":"5","humidity":"","maxtempm":"10", "maxtempi":"50","mintempm":"7", "mintempi":"44","maxhumidity":"93","minhumidity":"76","maxdewptm":"9", "maxdewpti":"48","mindewptm":"4", "mindewpti":"39","maxpressurem":"1023", "maxpressurei":"30.22","minpressurem":"1012", "minpressurei":"29.90","maxwspdm":"39", "maxwspdi":"24","minwspdm":"10", "minwspdi":"6","maxvism":"16", "maxvisi":"10","minvism":"2", "minvisi":"2","gdegreedays":"0","heatingdegreedays":"18","coolingdegreedays":"0","precipm":"2.03", "precipi":"0.08","precipsource":"","heatingdegreedaysnormal":"5","monthtodateheatingdegreedays":"179","monthtodateheatingdegreedaysnormal":"232","since1sepheatingdegreedays":"","since1sepheatingdegreedaysnormal":"","since1julheatingdegreedays":"5798","since1julheatingdegreedaysnormal":"5613","coolingdegreedaysnormal":"2","monthtodatecoolingdegreedays":"21","monthtodatecoolingdegreedaysnormal":"17","since1sepcoolingdegreedays":"","since1sepcoolingdegreedaysnormal":"","since1jancoolingdegreedays":"22","since1jancoolingdegreedaysnormal":"20" }
+		]
+	}
+}
