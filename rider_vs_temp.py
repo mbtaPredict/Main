@@ -183,6 +183,48 @@ def plot_5degree(year):
 	ax3.set_ylabel("# of Riders")
 	show()
 
-plot(2011)
-plot_1degree(2011)
-plot_5degree(2011)
+def plot_allyears():
+	#determines whether or not it is a leap year
+
+	riders_vs_temp = {}
+
+	for year in [2011,2012,2013]:
+		if year % 4 == 0:
+			numDaysInMonth = [31, 29, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31]
+		else:
+			numDaysInMonth = [31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31]
+
+		#adds all hourly temperatures in given year to dictionary as keys with values of 0
+		for m in range(1,13):
+			for d in range(numDaysInMonth[m-1]):
+				for h in range(0,24):
+					if int(float(weather.data[year][m][d+1][h]['tempi'])) < -100:
+						pass
+					else:
+						riders_vs_temp[weather.data[year][m][d+1][h]['tempi']] = 0
+
+		#adds number of riders to associated temperature in the dictionary
+		for month in range(1,13):
+			for day in range(numDaysInMonth[month-1]):
+				for hour in range(24):
+					if int(float(weather.data[year][month][day+1][hour]['tempi'])) < -100:
+						pass
+					else:
+						riders_vs_temp[weather.data[year][month][day+1][hour]['tempi']] += count_riders(year, month, day, hour)
+
+	#plots data
+	x = riders_vs_temp.keys()
+	y = riders_vs_temp.values()
+
+	fig1 = plt.figure(1)
+	ax1 = fig1.add_subplot(1,1,1)
+	ax1.scatter(x,y)
+	ax1.set_title("No Smoothing")
+	ax1.set_xlabel("Temperature (F)")
+	ax1.set_ylabel("# of Riders")
+	show()	
+
+# plot(2011)
+# plot_1degree(2011)
+# plot_5degree(2011)
+plot_allyears()
