@@ -110,7 +110,7 @@ class HubwayDatum:
 	def total_rides_in_day(self, year, month, day):
 		"""
 		Input: integers for year, month, day
-		Return: integer for total number of rides on that day
+		Output: integer for total number of rides on that day
 		"""
 
 		numRidesInDay = 0
@@ -126,7 +126,7 @@ class HubwayDatum:
 	def total_rides_in_hour(self, year, month, day, hour):
 		"""
 		Input: integers for year, month, day, hour
-		Return: integer for total number of rides in that hour
+		Output: integer for total number of rides in that hour
 		"""
 		
 		numRidesInHour = 0

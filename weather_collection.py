@@ -210,6 +210,43 @@ class WeatherDatum:
 				for hour in xrange(24):
 					self.data[year][month+1][day+1][hour] = archived_hour(year, month+1, day+1, hour)
 
+
+def get_imminent_weather(year, month, day, hour):
+	"""
+	Input: ints for year, month, day, hour (this time must be within
+		the next 10 days)
+	Output: the dictionary of weather data for that hour
+	"""
+
+	data = get_json(WUNDERGROUND_BASE_URL+'/hourly10day/q/MA/Boston.json')
+	for hourData in data['hourly_forecast']:
+		if int(hourData['FCTTIME']['mon']) == month:
+			if int(hourData['FCTTIME']['mday']) == day:
+				if int(hourData['FCTTIME']['hour']) == 12:
+					return hourData
+
+
+def get_imminent_temp(year, month, day, hour):
+	"""
+	Input: ints for year, month, day, hour (this time must be within
+		the next 10 days)
+	Output: integer for forecasted temp at the given hour in degrees fahrenheit
+	"""
+
+	data = get_imminent_weather(year, month, day, hour)
+	return int(data['temp']['english'])
+
+
+def get_imminent_temp_precip_snow(year, month, day, hour):
+	"""
+	Input: ints for year, month, day, hour (this time must be within
+		the next 10 days)
+	Output: list of forcasted temperature in degrees, precipitation in inches, and snow (0 or 1)
+	"""
+
+	data = get_imminent_weather(year, month, day, hour)
+	return [float(data['temp']['english']), float(data['qpf']['english']), int(data['snow']['english'] == 0)]
+
 # RUN THIS TO OPEN THE WEATHER DATABASE CLASS STRUCTURE:
 # ----------------------------------------------------
 # weather = pickle.load(open('LargeDataStorage/weatherDataFile', 'rb'))

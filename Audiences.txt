@@ -1,0 +1,15 @@
+Depending on the background of different people, you address different things:
+
+Portfolio:
+-Link to website. :)
+
+Website:
+-Addressing people that would either use our product or would use our code.
+-We want to have understandable stuff for people that don't know the PYTHONS.
+-Have the output of our code, lot of pictures, correlations, graphs, etc, and then have the code available through github so that in-depth pythoners can see how things happen.
+
+Poster:
+-Pictures illustrating data
+-Architecture of code / data classes
+-Math backing up our ML stuff / correlations stuff
+-No code, that is weird on a poster
