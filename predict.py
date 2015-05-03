@@ -25,7 +25,7 @@ def prediction():
 
 		#If we have the data for the requested date, then return it
 		#If the requested date is not in our database, then make a prediction
-		if year in hubway.data.keys() and month in hubway.data[year].keys() and day in hubway.data[year][month].keys():
+		if year in hubway.data.keys() and month in hubway.data[year].keys() and day in hubway.data[year][month].keys() and hour in hubway.data[year][month][day].keys():
 			print 'We seem to have that time on record. There were %i rides on %i/%i/%i at %i:00.' %(hubway.total_rides_in_hour(year, month, day, hour), month, day, year, hour)
 		else:
 			print 'We predict that %i rides will occur on %i/%i/%i at %i:00.' %(hubway.total_rides_in_hour(2013, month, day, hour)+(20*(year-2013)), month, day, year, hour)

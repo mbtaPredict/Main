@@ -1,58 +1,49 @@
-import numpy as np
-from sklearn.svm import SVR
 import matplotlib.pyplot as plt
+import numpy as np
+from sklearn import datasets, linear_model
 import pickle
-from hubway_collection import *
-from weather_collection import *
 
-hubway = pickle.load(open('LargeDataStorage/hubwayDataFile', 'rb'))
-weather = pickle.load(open('weatherDataFile', 'rb'))
+# # Load the diabetes dataset
+diabetes = datasets.load_diabetes()
 
-# print weather.data[2013][4][1]
 
-def average_day_temp(year, month, day):
-	totalTemp = 0.0
+# # Use only one feature
+diabetes_X = diabetes.data[:, np.newaxis]
+diabetes_X_temp = diabetes_X[:, :, 2]
 
-	for hour in weather.data[year][month][day]:
-		totalTemp += float(weather.data[year][month][day][hour]['tempi'])
+# # Split the data into training/testing sets
+# diabetes_X_train = diabetes_X_temp[:-20]
+diabetes_X_test = diabetes_X_temp[-20:]
 
-	averageDayTemp = float(totalTemp) / len(weather.data[year][month][day])
-	return averageDayTemp
+# # Split the targets into training/testing sets
+# diabetes_y_train = diabetes.target[:-20]
+diabetes_y_test = diabetes.target[-20:]
 
-###############################################################################
-# Generate sample data
-X = []
-y = []
+# # Create linear regression object
+# regr = linear_model.LinearRegression()
 
-for day in xrange(29):
-	X.append([average_day_temp(2013, 4, day+1)])
-	y.append(hubway.total_rides_in_day(2013, 4, day+1))
+# # Train the model using the training sets
+# regr.fit(diabetes_X_train, diabetes_y_train)
 
-print 'Temp:', X
-print 'Number of Rides:', y
+regr = pickle.load(open('mlFile.pickle', 'rb'))
 
-###############################################################################
-# Add noise to targets
-# y[::5] += 3 * (0.5 - np.random.rand(8))
+# The coefficients
+print('Coefficients: \n', regr.coef_)
+# The mean square error
+print("Residual sum of squares: %.2f"
+      % np.mean((regr.predict(diabetes_X_test) - diabetes_y_test) ** 2))
+# Explained variance score: 1 is perfect prediction
+print('Variance score: %.2f' % regr.score(diabetes_X_test, diabetes_y_test))
 
-###############################################################################
-# Fit regression model
-svr_rbf = SVR(kernel='rbf', C=1e3, gamma=0.1)
-svr_lin = SVR(kernel='linear', C=1e3)
-svr_poly = SVR(kernel='poly', C=1e3, degree=2)
-y_rbf = svr_rbf.fit(X, y).predict(X)
-y_lin = svr_lin.fit(X, y).predict(X)
-y_poly = svr_poly.fit(X, y).predict(X)
+# Plot outputs
+plt.scatter(diabetes_X_test, diabetes_y_test,  color='black')
+plt.plot(diabetes_X_test, regr.predict(diabetes_X_test), color='blue',
+         linewidth=3)
 
-###############################################################################
-# look at the results
-plt.scatter(X, y, c='k', label='data')
-plt.hold('on')
-plt.plot(X, y_rbf, c='g', label='RBF model')
-plt.plot(X, y_lin, c='r', label='Linear model')
-plt.plot(X, y_poly, c='b', label='Polynomial model')
-plt.xlabel('data')
-plt.ylabel('target')
-plt.title('Support Vector Regression')
-plt.legend()
+plt.xticks(())
+plt.yticks(())
+
 plt.show()
+
+# f = open('test.txt', 'w')
+# # pickle.dump(regr, open('mlFile.pickle', 'wb'))
