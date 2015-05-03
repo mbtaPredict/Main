@@ -1,9 +1,15 @@
 from Tkinter import *
 from hubway_collection import *
 from weather_collection import *
+import numpy as np
+
+from sklearn.linear_model import LinearRegression, Ridge
+from sklearn.cross_validation import train_test_split
+from sklearn.preprocessing import PolynomialFeatures
+from sklearn.pipeline import make_pipeline
 
 hubway = pickle.load(open('LargeDataStorage/hubwayDataFile', 'rb'))
-# ridershipModel = pickle.load(open('LargeDataStorage/File', 'rb'))
+ridershipModel = pickle.load(open('LargeDataStorage/mlModel', 'rb'))
 
 class UserInterface(Frame):
     def __init__(self, master=None):
@@ -51,7 +57,10 @@ class UserInterface(Frame):
             forecastedTemp = forecast[0]
             forcastedPrecip = forecast[1]
             forcastedSnow = forecast[2]
-            numRides = ridershipModel.predict(np.array([year, month, day, hour, forecastedTemp, forcastedPrecip, forcastedSnow]))
+            numRides = ridershipModel.predict(np.array([month, day, hour, forecastedTemp, forcastedPrecip, forcastedSnow]))
+        #Abstracts out negative ridership predictions
+        if numRides < 0:
+            numRides = 0
 
         self.ridership['text'] = '%i rides on %s' %(numRides, date)
 
