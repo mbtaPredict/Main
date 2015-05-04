@@ -1,3 +1,9 @@
+"""
+/hubwayPredict by William Lu, Shane Kelly, and Kevin Crispie
+predict.py is a MVP representation of our final program - 
+		   it runs in terminal (no GUI) and uses scaling to "predict" hubway ridership
+"""
+
 from hubway_collection import *
 from weather_collection import *
 import string
