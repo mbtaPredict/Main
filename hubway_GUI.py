@@ -8,6 +8,10 @@ from sklearn.preprocessing import PolynomialFeatures
 from sklearn.pipeline import make_pipeline
 
 class UserInterface(Frame):
+    """
+    This class represents the graphical user interface.
+    """
+
     def __init__(self, master=None):
         Frame.__init__(self, master)
         self.pack()
@@ -115,6 +119,6 @@ class UserInterface(Frame):
 
 if __name__ == '__main__':
     hubway = pickle.load(open('LargeDataStorage/hubwayDataFile', 'rb'))
-    ridershipModel = pickle.load(open('LargeDataStorage/File', 'rb'))
+    ridershipModel = pickle.load(open('LargeDataStorage/mlModel', 'rb'))
     UI = UserInterface()
     UI.mainloop()
