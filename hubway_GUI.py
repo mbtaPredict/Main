@@ -13,6 +13,10 @@ class UserInterface(Frame):
     """
 
     def __init__(self, master=None):
+        """
+        Creates a blank GUI.
+        """
+
         Frame.__init__(self, master)
         self.pack()
         self.createUI()
@@ -50,19 +54,25 @@ class UserInterface(Frame):
         hour = int(self.hour.get())
         date = '%i/%i/%i @%i' %(month, day, year, hour)
 
+        #If we have archived data for that date, display it
         if year in hubway.data.keys() and month in hubway.data[year].keys() and day in hubway.data[year][month].keys() and hour in hubway.data[year][month][day].keys():
             numRides = hubway.total_rides_in_hour(year, month, day, hour)
+            self.ridership['text'] = '%i rides on %s' %(numRides, date)
+        #If we don't have archived data, then attempt to predict the ridership
         else:
-            forecast = get_imminent_temp_precip_snow(year, month, day, hour)
-            forecastedTemp = forecast[0]
-            forcastedPrecip = forecast[1]
-            forcastedSnow = forecast[2]
-            numRides = ridershipModel.predict(np.array([month, day, hour, forecastedTemp, forcastedPrecip, forcastedSnow]))
-        #Abstracts out negative ridership predictions
-        if numRides < 0:
-            numRides = 0
-
-        self.ridership['text'] = '%i rides on %s' %(numRides, date)
+            try:
+                forecast = get_imminent_temp_precip_snow(year, month, day, hour)
+                forecastedTemp = forecast[0]
+                forcastedPrecip = forecast[1]
+                forcastedSnow = forecast[2]
+                numRides = ridershipModel.predict(np.array([month, day, hour, forecastedTemp, forcastedPrecip, forcastedSnow]))
+                #Abstracts out negative ridership predictions
+                if numRides < 0:
+                    numRides = 0
+                self.ridership['text'] = '%i rides on %s' %(numRides, date)
+            #If the prediction date is not within the next 10 days, display an error
+            except:
+                self.ridership['text'] = 'There is only archived data for 2011, 2012, and 2013. There is only prediction data for the next 10 days. Please input a valid date.'
 
 
     def createUI(self):
@@ -117,8 +127,13 @@ class UserInterface(Frame):
         self.QUIT = Button(self, text='Quit', fg='red', width = 20, command=self.quit)
         self.QUIT.grid(column=1, row=6, columnspan=2)
 
+
 if __name__ == '__main__':
+    print 'Hubway data: loading...'
     hubway = pickle.load(open('LargeDataStorage/hubwayDataFile', 'rb'))
+    print 'Hubway data: complete'
+    print 'Prediction model: loading...'
     ridershipModel = pickle.load(open('LargeDataStorage/mlModel', 'rb'))
+    print 'Prediction model: complete'
     UI = UserInterface()
     UI.mainloop()
