@@ -1,9 +1,8 @@
-import urllib   # urlencode function
-import urllib2  # urlopen function (better than urllib version)
+import urllib
+import urllib2
 import json
 import ast
 import time
-from pprint import pprint
 import pickle
 
 
@@ -32,7 +31,7 @@ def weather_on(date):
 	return get_json(WUNDERGROUND_BASE_URL+ "/history_" + str(date) + "/q/MA/Boston.json")
 
 
-def store_year_data(year):
+def store_year_data(year, delay=6):
 	"""
 	Stores the hourly weather data for <YEAR> and stores it as 365 separate
 		.txt files in a folder called '<YEAR>Data'. The folder called
@@ -70,7 +69,7 @@ def store_year_data(year):
 					f = open('WeatherData/'+str(year)+'Data/'+str(year)+'-'+number[month]+'-'+number[day]+'.txt', 'w')
 					f.write(str(weather_on(date)))
 					f.close()
-					time.sleep(6)
+					time.sleep(delay)
 					day += 1
 			elif month in month30:
 				for x in range(30):
@@ -78,7 +77,7 @@ def store_year_data(year):
 					f = open('WeatherData/'+str(year)+'Data/'+str(year)+'-'+number[month]+'-'+number[day]+'.txt', 'w')
 					f.write(str(weather_on(date)))
 					f.close()
-					time.sleep(6)
+					time.sleep(delay)
 					day += 1
 			elif month in month28:
 				for x in range(numDaysFeb):
@@ -86,7 +85,7 @@ def store_year_data(year):
 					f = open('WeatherData/'+str(year)+'Data/'+str(year)+'-'+number[month]+'-'+number[day]+'.txt', 'w')
 					f.write(str(weather_on(date)))
 					f.close()
-					time.sleep(6)
+					time.sleep(delay)
 					day += 1
 			month += 1
 
@@ -223,7 +222,6 @@ def get_imminent_weather(year, month, day, hour):
 		if int(hourData['FCTTIME']['mon']) == month:
 			if int(hourData['FCTTIME']['mday']) == day:
 				if int(hourData['FCTTIME']['hour']) == hour:
-					print hourData['FCTTIME']['pretty']
 					return hourData
 
 
@@ -247,13 +245,3 @@ def get_imminent_temp_precip_snow(year, month, day, hour):
 
 	data = get_imminent_weather(year, month, day, hour)
 	return [float(data['temp']['english']), float(data['qpf']['english']), int(data['snow']['english'] == 0)]
-
-# RUN THIS TO OPEN THE WEATHER DATABASE CLASS STRUCTURE:
-# ----------------------------------------------------
-# weather = pickle.load(open('LargeDataStorage/weatherDataFile', 'rb'))
-# ----------------------------------------------------
-
-# RUN THIS TO RE-SAVE THE WEATHER DATA TO THE PICKLE FILE:
-# ----------------------------------------------------
-# pickle.dump(weather, open('LargeDataStorage/weatherDataFile', 'wb'))
-# ----------------------------------------------------
