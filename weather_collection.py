@@ -223,7 +223,6 @@ def get_imminent_weather(year, month, day, hour):
 		if int(hourData['FCTTIME']['mon']) == month:
 			if int(hourData['FCTTIME']['mday']) == day:
 				if int(hourData['FCTTIME']['hour']) == hour:
-					print hourData['FCTTIME']['pretty']
 					return hourData
 
 
