@@ -2,7 +2,7 @@ from Tkinter import *
 from hubway_collection import *
 from weather_collection import *
 
-hubway = pickle.load(open('LargeDataStorage/hubwayDataFile', 'rb'))
+# hubway = pickle.load(open('LargeDataStorage/hubwayDataFile', 'rb'))
 # ridershipModel = pickle.load(open('LargeDataStorage/File', 'rb'))
 
 class UserInterface(Frame):
