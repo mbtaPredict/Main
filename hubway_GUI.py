@@ -7,9 +7,6 @@ from sklearn.cross_validation import train_test_split
 from sklearn.preprocessing import PolynomialFeatures
 from sklearn.pipeline import make_pipeline
 
-# hubway = pickle.load(open('LargeDataStorage/hubwayDataFile', 'rb'))
-# ridershipModel = pickle.load(open('LargeDataStorage/File', 'rb'))
-
 class UserInterface(Frame):
     def __init__(self, master=None):
         Frame.__init__(self, master)
@@ -116,6 +113,8 @@ class UserInterface(Frame):
         self.QUIT = Button(self, text='Quit', fg='red', width = 20, command=self.quit)
         self.QUIT.grid(column=1, row=6, columnspan=2)
 
-
-UI = UserInterface()
-UI.mainloop()
+if __name__ == '__main__':
+    hubway = pickle.load(open('LargeDataStorage/hubwayDataFile', 'rb'))
+    ridershipModel = pickle.load(open('LargeDataStorage/File', 'rb'))
+    UI = UserInterface()
+    UI.mainloop()
