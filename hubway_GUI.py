@@ -8,8 +8,8 @@ from sklearn.cross_validation import train_test_split
 from sklearn.preprocessing import PolynomialFeatures
 from sklearn.pipeline import make_pipeline
 
-hubway = pickle.load(open('LargeDataStorage/hubwayDataFile', 'rb'))
-ridershipModel = pickle.load(open('LargeDataStorage/mlModel', 'rb'))
+# hubway = pickle.load(open('LargeDataStorage/hubwayDataFile', 'rb'))
+# ridershipModel = pickle.load(open('LargeDataStorage/File', 'rb'))
 
 class UserInterface(Frame):
     def __init__(self, master=None):
