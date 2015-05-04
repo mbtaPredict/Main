@@ -2,7 +2,6 @@ from Tkinter import *
 from hubway_collection import *
 from weather_collection import *
 import numpy as np
-
 from sklearn.linear_model import LinearRegression, Ridge
 from sklearn.cross_validation import train_test_split
 from sklearn.preprocessing import PolynomialFeatures
