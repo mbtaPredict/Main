@@ -56,7 +56,7 @@ Our programs use large amounts of data that must be formatted correctly before r
 
 To use the GUI, type to following command into terminal:
 ```
-python hubway_gui.py
+python hubway_GUI.py
 ```
 This will start running the file. First, the Hubway data will load. This will take around a minute. Next, input the date and time that you would like data for. You can input any date or time. The histrocial data that we have is for Hubway rides during 2011, 2012, and 2013. If the input is a date and time for which we have historical data, the gui displays the historical data. To get a prediction, input a date and time that is less than 240 hours, or 10 days, in the future.  The month should be a number, and the hour should be an integer from 0-23. If an invalid date and time is entered, an error message will appear.
 
