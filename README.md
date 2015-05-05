@@ -10,7 +10,6 @@ A comprehensive prediction of ridership for Hubway, a bikesharing service in Bos
 - <https://github.com/shanek21>
 
 **William Lu**
-
 - <https://github.com/williamalu>
 
 
@@ -70,6 +69,6 @@ We have left our own Weather Underground API key in our code. If you plan on obt
 
 To run our ipython notebook, type the following command into terminal:
 ``` 
-ipython notebook lin_reg.ipynb
+IPython notebook lin_reg.ipynb
 ```
 When a webpage opens up, click on the file name that says "lin_reg.ipynb". The IPython notebook will open. Run the python notebook by selecting each section in order and clicking the run arrow at the top of the page. This IPython notebook develops the model we use to predict hubway ridership.
