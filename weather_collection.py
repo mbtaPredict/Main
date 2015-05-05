@@ -1,3 +1,8 @@
+"""
+/hubwayPredict by William Lu, Shane Kelly, and Kevin Crispie
+weather_collection.py contains the weatherDatum class and associated functions for accessing stored weather data
+"""
+
 import urllib
 import urllib2
 import json

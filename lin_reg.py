@@ -1,14 +1,17 @@
+"""
+/hubwayPredict by William Lu, Shane Kelly, and Kevin Crispie
+lin_reg.py generates a 7 degree polynomial ridge regression model for hubway ridership
+Output: File stored in /LargeDataStorage/mlModel containing pickled ridership model
+"""
 from datetime import date
 import pickle
 import numpy as np
-import matplotlib.pyplot as plt
 
-from sklearn.linear_model import LinearRegression, Ridge
+from sklearn.linear_model import Ridge
 from sklearn.cross_validation import train_test_split
 from sklearn.preprocessing import PolynomialFeatures
 from sklearn.pipeline import make_pipeline
 
-print "loading data"
 #load weather data
 from weather_collection import WeatherDatum
 weather = pickle.load(open('LargeDataStorage/weatherDataFile', 'rb'))
@@ -17,7 +20,8 @@ weather = pickle.load(open('LargeDataStorage/weatherDataFile', 'rb'))
 from hubway_collection import HubwayDatum
 hubway = pickle.load(open('LargeDataStorage/hubwayDataFile', 'rb'))
 
-def count_riders2(year, month, day, hour):
+
+def count_riders(year, month, day, hour):
 	"""
 	Input: year, month, day, hour
 	Output: total riders during that hour
@@ -35,11 +39,13 @@ def count_riders2(year, month, day, hour):
 			counter += len(hubway.data[year][month][day][hour][minute])
 	return counter
 
-def process_data2():
+
+def process_data():
     """
+    Output: Array formatted like array([year, month, day, hour, temp, precip, snow, riders])
     Warning: hard-coded for hubway data from 2013
-    Output: Array formatted array([year, month, day, hour, weekday, temp, precip, snow*, riders])
-    Note: * data is binary, units are in imperial (english) units
+    Note: snow data is binary, units are in imperial (english) units
+
     """
     
     year = 2013
@@ -56,6 +62,7 @@ def process_data2():
         # initalize list that will be appended to all_data
         curr_list = [year]
 
+        # create list of data that is then appended to all_data list, which becomes a list of lists
         for month in range(4, 6):
             for day in range(numDaysInMonth[month-4]):
                 for hour in range(0,24):
@@ -67,7 +74,7 @@ def process_data2():
                             precipi = 0
                         else: 
                             precipi = int(float(weather.data[year][month][day+2][hour]['precipi']))
-                        # snow = int(weather.data[year][month][day+2][hour]['snow'])
+                        snow = int(weather.data[year][month][day+2][hour]['snow'])
                         riders = count_riders2(year, month, day+2, hour)
                         # curr_list = [year, month, day+2, hour, weekday, tempi, precipi, snow, riders]
                         curr_list = [year, month, day+2, hour, weekday, tempi, precipi, riders]
@@ -79,53 +86,55 @@ def process_data2():
                             precipi = 0
                         else:
                             precipi = int(float(weather.data[year][month][day+1][hour]['precipi']))
-                        # snow = int(weather.data[year][month][day+1][hour]['snow'])
+                        snow = int(weather.data[year][month][day+1][hour]['snow'])
                         riders = count_riders2(year, month, day+1, hour)
                         # curr_list = [year, month, day+1, hour, weekday, tempi, precipi, snow, riders]
                         curr_list = [year, month, day+1, hour, weekday, tempi, precipi, riders]
                         all_data.append(curr_list)
     
+    # transforms all_data into an array and returns it
     return np.array(all_data)
 
+
 def lin_reg():
+    """
+    Creates and saves ridge regression model for hubway ridership.
+    """
     
     year = 2013
     
-    print "processing data"
     # import temperature and ridership data
-    data_array = process_data2()
+    data_array = process_data()
     
-    print "selecting data from array"
+    # select month, day, hour, temperature, precipitation, and snow data from data_array
     X = data_array[:,[1,2,3,4,5,6]]
+    # select ridership data from data_array
     Y = data_array[:,7]
 
-    print "reshaping data"
     # make array vertical so that scikit-learn can process it
     X = X.reshape(X.shape[0], -1)
     Y = Y.reshape(Y.shape[0], -1)
-    
-    print "train test split"
-    X_train, X_test, y_train, y_test = train_test_split(X, Y, train_size=0.4)
-    
-    degrees = 6
 
-    print "making a pipeline"
+    # splits data into training and testing bits
+    X_train, X_test, y_train, y_test = train_test_split(X, Y, train_size=0.5)
+    
+    # sets degree of polynomial regression
+    # in testing, anything greater than 7 will give a MemoryError
+    degrees = 7
+
+    # initalize scikit-learn model
     model = make_pipeline(PolynomialFeatures(degrees), Ridge())
 
-    print "fitting model"
+    # fits a model to training data
     model.fit(X_train, y_train)
 
-    print "scoring model"
-    print "Year %d, %d degree polynomial regression, month+day+hour" % (year, degrees)
-    print "Train R2 %f"%model.score(X_train, y_train)
-    print "Test R2 %f"%model.score(X_test, y_test)
+    # scores model
+    print "Year %d, %d degree polynomial regression" % (year, degrees)
+    print "Train R^2 %f"%model.score(X_train, y_train)
+    print "Test R^2 %f"%model.score(X_test, y_test)
 
-    print "pickle dumping"
-    pickle.dump(model, open('LargeDataStorage/mlModeltest', 'wb'))
-    print "done dumping"
-    # y_plot = model.predict(X)
-    # plt.plot(X, y_plot)
-    # plt.show()
+    # pickles and saves model
+    pickle.dump(model, open('LargeDataStorage/mlModel', 'wb'))
     return
 
 if __name__ == '__main__':

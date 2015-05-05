@@ -1,3 +1,8 @@
+"""
+/hubwayPredict by William Lu, Shane Kelly, and Kevin Crispie
+hubway_collection.py contains the hubwayDatum class and associated functions for accessing stored hubway data
+"""
+
 from os import path
 import csv
 import pickle
