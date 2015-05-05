@@ -2,6 +2,7 @@ import urllib
 import urllib2
 import json
 import ast
+from datetime import date
 import time
 import pickle
 
@@ -251,7 +252,7 @@ def get_imminent_temp(year, month, day, hour):
 	return int(data['temp']['english'])
 
 
-def get_imminent_temp_precip_snow_day(year, month, day):
+def get_imminent_weekday_temp_precip_snow_day(year, month, day):
 	"""
 	Input: ints for year, month, day (this time must be within
 		the next 10 days)
@@ -262,16 +263,5 @@ def get_imminent_temp_precip_snow_day(year, month, day):
 	data = get_imminent_weather_day(year, month, day)
 	dayData = []
 	for hour in xrange(len(data)):
-		dayData.append([float(data[hour]['temp']['english']), float(data[hour]['qpf']['english']), int(data[hour]['snow']['english'] == 0)])
+		dayData.append([date(year, month, day).weekday(), float(data[hour]['temp']['english']), float(data[hour]['qpf']['english']), int(data[hour]['snow']['english'] == 0)])
 	return dayData
-
-
-def get_imminent_temp_precip_snow_hour(year, month, day, hour):
-	"""
-	Input: ints for year, month, day, hour (this time must be within
-		the next 10 days)
-	Output: list of forcasted temperature in degrees, precipitation in inches, and snow (0 or 1)
-	"""
-
-	data = get_imminent_weather_hour(year, month, day, hour)
-	return [float(data['temp']['english']), float(data['qpf']['english']), int(data['snow']['english'] == 0)]

@@ -1,3 +1,4 @@
+from datetime import date
 import pickle
 import numpy as np
 import matplotlib.pyplot as plt
@@ -13,6 +14,7 @@ from weather_collection import WeatherDatum
 weather = pickle.load(open('LargeDataStorage/weatherDataFile', 'rb'))
 
 #load hubway data
+from hubway_collection import HubwayDatum
 hubway = pickle.load(open('LargeDataStorage/hubwayDataFile', 'rb'))
 
 def count_riders2(year, month, day, hour):
@@ -36,7 +38,7 @@ def count_riders2(year, month, day, hour):
 def process_data2():
     """
     Warning: hard-coded for hubway data from 2013
-    Output: Array formatted array([year, month, day, hour, temp, precip, snow*, riders])
+    Output: Array formatted array([year, month, day, hour, weekday, temp, precip, snow*, riders])
     Note: * data is binary, units are in imperial (english) units
     """
     
@@ -59,24 +61,28 @@ def process_data2():
                 for hour in range(0,24):
                     # this is here to make sure that data for April starts on the 2nd
                     if month == 4:
+                        weekday = date(year, month, day+2).weekday()
                         tempi = int(float(weather.data[year][month][day+2][hour]['tempi']))
                         if int(float(weather.data[year][month][day+2][hour]['precipi'])) < 0:
                             precipi = 0
                         else: 
                             precipi = int(float(weather.data[year][month][day+2][hour]['precipi']))
-                        snow = int(weather.data[year][month][day+2][hour]['snow'])
+                        # snow = int(weather.data[year][month][day+2][hour]['snow'])
                         riders = count_riders2(year, month, day+2, hour)
-                        curr_list = [year, month, day+2, hour, tempi, precipi, snow, riders]
+                        # curr_list = [year, month, day+2, hour, weekday, tempi, precipi, snow, riders]
+                        curr_list = [year, month, day+2, hour, weekday, tempi, precipi, riders]
                         all_data.append(curr_list)
                     else:
+                        weekday = date(year, month, day+1).weekday()
                         tempi = int(float(weather.data[year][month][day+1][hour]['tempi']))
                         if int(float(weather.data[year][month][day+1][hour]['precipi'])) < 0:
                             precipi = 0
                         else:
                             precipi = int(float(weather.data[year][month][day+1][hour]['precipi']))
-                        snow = int(weather.data[year][month][day+1][hour]['snow'])
+                        # snow = int(weather.data[year][month][day+1][hour]['snow'])
                         riders = count_riders2(year, month, day+1, hour)
-                        curr_list = [year, month, day+1, hour, tempi, precipi, snow, riders]
+                        # curr_list = [year, month, day+1, hour, weekday, tempi, precipi, snow, riders]
+                        curr_list = [year, month, day+1, hour, weekday, tempi, precipi, riders]
                         all_data.append(curr_list)
     
     return np.array(all_data)
@@ -99,9 +105,9 @@ def lin_reg():
     Y = Y.reshape(Y.shape[0], -1)
     
     print "train test split"
-    X_train, X_test, y_train, y_test = train_test_split(X, Y, train_size=0.5)
+    X_train, X_test, y_train, y_test = train_test_split(X, Y, train_size=0.4)
     
-    degrees = 7
+    degrees = 6
 
     print "making a pipeline"
     model = make_pipeline(PolynomialFeatures(degrees), Ridge())
@@ -115,12 +121,12 @@ def lin_reg():
     print "Test R2 %f"%model.score(X_test, y_test)
 
     print "pickle dumping"
-    pickle.dump(model, open('LargeDataStorage/mlModel8', 'wb'))
+    pickle.dump(model, open('LargeDataStorage/mlModeltest', 'wb'))
     print "done dumping"
-#         y_plot = model.predict(X)
-#         plt.plot(X, y_plot)
-#         plt.show()
-    
+    # y_plot = model.predict(X)
+    # plt.plot(X, y_plot)
+    # plt.show()
     return
 
-lin_reg()
+if __name__ == '__main__':
+    lin_reg()
