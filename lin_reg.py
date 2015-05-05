@@ -3,7 +3,7 @@
 lin_reg.py generates a 7 degree polynomial ridge regression model for hubway ridership
 Output: File stored in /LargeDataStorage/mlModel containing pickled ridership model
 """
-
+from datetime import date
 import pickle
 import numpy as np
 
@@ -17,6 +17,7 @@ from weather_collection import WeatherDatum
 weather = pickle.load(open('LargeDataStorage/weatherDataFile', 'rb'))
 
 #load hubway data
+from hubway_collection import HubwayDatum
 hubway = pickle.load(open('LargeDataStorage/hubwayDataFile', 'rb'))
 
 
@@ -42,9 +43,9 @@ def count_riders(year, month, day, hour):
 def process_data():
     """
     Output: Array formatted like array([year, month, day, hour, temp, precip, snow, riders])
-    
     Warning: hard-coded for hubway data from 2013
     Note: snow data is binary, units are in imperial (english) units
+
     """
     
     year = 2013
@@ -67,24 +68,28 @@ def process_data():
                 for hour in range(0,24):
                     # this is here to make sure that data for April starts on the 2nd
                     if month == 4:
+                        weekday = date(year, month, day+2).weekday()
                         tempi = int(float(weather.data[year][month][day+2][hour]['tempi']))
                         if int(float(weather.data[year][month][day+2][hour]['precipi'])) < 0:
                             precipi = 0
                         else: 
                             precipi = int(float(weather.data[year][month][day+2][hour]['precipi']))
                         snow = int(weather.data[year][month][day+2][hour]['snow'])
-                        riders = count_riders(year, month, day+2, hour)
-                        curr_list = [year, month, day+2, hour, tempi, precipi, snow, riders]
+                        riders = count_riders2(year, month, day+2, hour)
+                        # curr_list = [year, month, day+2, hour, weekday, tempi, precipi, snow, riders]
+                        curr_list = [year, month, day+2, hour, weekday, tempi, precipi, riders]
                         all_data.append(curr_list)
                     else:
+                        weekday = date(year, month, day+1).weekday()
                         tempi = int(float(weather.data[year][month][day+1][hour]['tempi']))
                         if int(float(weather.data[year][month][day+1][hour]['precipi'])) < 0:
                             precipi = 0
                         else:
                             precipi = int(float(weather.data[year][month][day+1][hour]['precipi']))
                         snow = int(weather.data[year][month][day+1][hour]['snow'])
-                        riders = count_riders(year, month, day+1, hour)
-                        curr_list = [year, month, day+1, hour, tempi, precipi, snow, riders]
+                        riders = count_riders2(year, month, day+1, hour)
+                        # curr_list = [year, month, day+1, hour, weekday, tempi, precipi, snow, riders]
+                        curr_list = [year, month, day+1, hour, weekday, tempi, precipi, riders]
                         all_data.append(curr_list)
     
     # transforms all_data into an array and returns it
@@ -109,7 +114,7 @@ def lin_reg():
     # make array vertical so that scikit-learn can process it
     X = X.reshape(X.shape[0], -1)
     Y = Y.reshape(Y.shape[0], -1)
-    
+
     # splits data into training and testing bits
     X_train, X_test, y_train, y_test = train_test_split(X, Y, train_size=0.5)
     
@@ -130,7 +135,6 @@ def lin_reg():
 
     # pickles and saves model
     pickle.dump(model, open('LargeDataStorage/mlModel', 'wb'))
-    
     return
 
 if __name__ == '__main__':
