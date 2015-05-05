@@ -1,2 +1,4 @@
-thing = range(10)
-print thing
+import matplotlib.pyplot as plt
+
+plt.plot()
+plt.show()
