@@ -268,5 +268,5 @@ def get_imminent_weekday_temp_precip_snow_day(year, month, day):
 	data = get_imminent_weather_day(year, month, day)
 	dayData = []
 	for hour in xrange(len(data)):
-		dayData.append([date(year, month, day).weekday(), float(data[hour]['temp']['english']), float(data[hour]['qpf']['english']), int(data[hour]['snow']['english'] == 0)])
+		dayData.append([int(date(year, month, day+2).weekday()<5), float(data[hour]['temp']['english']), float(data[hour]['qpf']['english']), int(data[hour]['snow']['english'] == 0)])
 	return dayData

@@ -6,19 +6,10 @@ Output: File stored in /LargeDataStorage/mlModel containing pickled ridership mo
 from datetime import date
 import pickle
 import numpy as np
-
 from sklearn.linear_model import Ridge
 from sklearn.cross_validation import train_test_split
 from sklearn.preprocessing import PolynomialFeatures
 from sklearn.pipeline import make_pipeline
-
-#load weather data
-from weather_collection import WeatherDatum
-weather = pickle.load(open('LargeDataStorage/weatherDataFile', 'rb'))
-
-#load hubway data
-from hubway_collection import HubwayDatum
-hubway = pickle.load(open('LargeDataStorage/hubwayDataFile', 'rb'))
 
 
 def count_riders(year, month, day, hour):
@@ -68,28 +59,28 @@ def process_data():
                 for hour in range(0,24):
                     # this is here to make sure that data for April starts on the 2nd
                     if month == 4:
-                        weekday = date(year, month, day+2).weekday()
+                        weekday = int(date(year, month, day+2).weekday()<5)
                         tempi = int(float(weather.data[year][month][day+2][hour]['tempi']))
                         if int(float(weather.data[year][month][day+2][hour]['precipi'])) < 0:
                             precipi = 0
                         else: 
                             precipi = int(float(weather.data[year][month][day+2][hour]['precipi']))
                         snow = int(weather.data[year][month][day+2][hour]['snow'])
-                        riders = count_riders2(year, month, day+2, hour)
+                        riders = count_riders(year, month, day+2, hour)
                         # curr_list = [year, month, day+2, hour, weekday, tempi, precipi, snow, riders]
-                        curr_list = [year, month, day+2, hour, weekday, tempi, precipi, riders]
+                        curr_list = [year, month, day+2, hour, weekday, tempi, riders]
                         all_data.append(curr_list)
                     else:
-                        weekday = date(year, month, day+1).weekday()
+                        weekday = int(date(year, month, day+1).weekday()<5)
                         tempi = int(float(weather.data[year][month][day+1][hour]['tempi']))
                         if int(float(weather.data[year][month][day+1][hour]['precipi'])) < 0:
                             precipi = 0
                         else:
                             precipi = int(float(weather.data[year][month][day+1][hour]['precipi']))
                         snow = int(weather.data[year][month][day+1][hour]['snow'])
-                        riders = count_riders2(year, month, day+1, hour)
+                        riders = count_riders(year, month, day+1, hour)
                         # curr_list = [year, month, day+1, hour, weekday, tempi, precipi, snow, riders]
-                        curr_list = [year, month, day+1, hour, weekday, tempi, precipi, riders]
+                        curr_list = [year, month, day+1, hour, weekday, tempi, riders]
                         all_data.append(curr_list)
     
     # transforms all_data into an array and returns it
@@ -107,9 +98,9 @@ def lin_reg():
     data_array = process_data()
     
     # select month, day, hour, temperature, precipitation, and snow data from data_array
-    X = data_array[:,[1,2,3,4,5,6]]
+    X = data_array[:,[1,2,3,4,5]]
     # select ridership data from data_array
-    Y = data_array[:,7]
+    Y = data_array[:,6]
 
     # make array vertical so that scikit-learn can process it
     X = X.reshape(X.shape[0], -1)
@@ -120,12 +111,13 @@ def lin_reg():
     
     # sets degree of polynomial regression
     # in testing, anything greater than 7 will give a MemoryError
-    degrees = 7
+    degrees = 6
 
     # initalize scikit-learn model
     model = make_pipeline(PolynomialFeatures(degrees), Ridge())
 
     # fits a model to training data
+    print 'fitting model...'
     model.fit(X_train, y_train)
 
     # scores model
@@ -134,8 +126,17 @@ def lin_reg():
     print "Test R^2 %f"%model.score(X_test, y_test)
 
     # pickles and saves model
-    pickle.dump(model, open('LargeDataStorage/mlModel', 'wb'))
-    return
+    pickle.dump(model, open('LargeDataStorage/mlModeltest', 'wb'))
+    pass
 
 if __name__ == '__main__':
+    #load weather data
+    print 'loading weather...'
+    from weather_collection import WeatherDatum
+    weather = pickle.load(open('LargeDataStorage/weatherDataFile', 'rb'))
+
+    #load hubway data
+    print 'loading ridership...'
+    from hubway_collection import HubwayDatum
+    hubway = pickle.load(open('LargeDataStorage/hubwayDataFile', 'rb'))
     lin_reg()
