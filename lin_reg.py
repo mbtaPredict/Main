@@ -59,28 +59,28 @@ def process_data():
                 for hour in range(0,24):
                     # this is here to make sure that data for April starts on the 2nd
                     if month == 4:
-                        weekday = int(date(year, month, day+2).weekday()<5)
-                        tempi = int(float(weather.data[year][month][day+2][hour]['tempi']))
-                        if int(float(weather.data[year][month][day+2][hour]['precipi'])) < 0:
-                            precipi = 0
-                        else: 
-                            precipi = int(float(weather.data[year][month][day+2][hour]['precipi']))
-                        snow = int(weather.data[year][month][day+2][hour]['snow'])
+                        # weekday = int(date(year, month, day+2).weekday()<5)
+                        # tempi = int(float(weather.data[year][month][day+2][hour]['tempi']))
+                        # if int(float(weather.data[year][month][day+2][hour]['precipi'])) < 0:
+                        #     precipi = 0
+                        # else: 
+                        #     precipi = int(float(weather.data[year][month][day+2][hour]['precipi']))
+                        # snow = int(weather.data[year][month][day+2][hour]['snow'])
                         riders = count_riders(year, month, day+2, hour)
                         # curr_list = [year, month, day+2, hour, weekday, tempi, precipi, snow, riders]
-                        curr_list = [year, month, day+2, hour, weekday, tempi, riders]
+                        curr_list = [year, month, day+2, hour, riders]
                         all_data.append(curr_list)
                     else:
-                        weekday = int(date(year, month, day+1).weekday()<5)
-                        tempi = int(float(weather.data[year][month][day+1][hour]['tempi']))
-                        if int(float(weather.data[year][month][day+1][hour]['precipi'])) < 0:
-                            precipi = 0
-                        else:
-                            precipi = int(float(weather.data[year][month][day+1][hour]['precipi']))
-                        snow = int(weather.data[year][month][day+1][hour]['snow'])
+                        # weekday = int(date(year, month, day+1).weekday()<5)
+                        # tempi = int(float(weather.data[year][month][day+1][hour]['tempi']))
+                        # if int(float(weather.data[year][month][day+1][hour]['precipi'])) < 0:
+                        #     precipi = 0
+                        # else:
+                        #     precipi = int(float(weather.data[year][month][day+1][hour]['precipi']))
+                        # snow = int(weather.data[year][month][day+1][hour]['snow'])
                         riders = count_riders(year, month, day+1, hour)
                         # curr_list = [year, month, day+1, hour, weekday, tempi, precipi, snow, riders]
-                        curr_list = [year, month, day+1, hour, weekday, tempi, riders]
+                        curr_list = [year, month, day+1, hour, riders]
                         all_data.append(curr_list)
     
     # transforms all_data into an array and returns it
@@ -98,9 +98,9 @@ def lin_reg():
     data_array = process_data()
     
     # select month, day, hour, temperature, precipitation, and snow data from data_array
-    X = data_array[:,[1,2,3,4,5]]
+    X = data_array[:,[1,2,3]]
     # select ridership data from data_array
-    Y = data_array[:,6]
+    Y = data_array[:,4]
 
     # make array vertical so that scikit-learn can process it
     X = X.reshape(X.shape[0], -1)
@@ -111,7 +111,7 @@ def lin_reg():
     
     # sets degree of polynomial regression
     # in testing, anything greater than 7 will give a MemoryError
-    degrees = 6
+    degrees = 7
 
     # initalize scikit-learn model
     model = make_pipeline(PolynomialFeatures(degrees), Ridge())
@@ -126,7 +126,7 @@ def lin_reg():
     print "Test R^2 %f"%model.score(X_test, y_test)
 
     # pickles and saves model
-    pickle.dump(model, open('LargeDataStorage/mlModeltest', 'wb'))
+    pickle.dump(model, open('LargeDataStorage/mlModelNoWeather', 'wb'))
     pass
 
 if __name__ == '__main__':

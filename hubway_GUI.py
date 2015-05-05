@@ -55,7 +55,7 @@ class UserInterface(Frame):
             dayData = get_imminent_weekday_temp_precip_snow_day(year, month, day)
             dayPrediction = []
             for hourIndex in xrange(len(dayData)):
-                numRidesInHour = float(ridershipModel.predict(np.array([month, day, hourIndex, dayData[hourIndex][1], dayData[hourIndex][2], dayData[hourIndex][3]])))
+                numRidesInHour = float(ridershipModel.predict(np.array([month, day, hourIndex])))
                 if numRidesInHour < 0:
                     numRidesInHour = 0
                 dayPrediction.append(numRidesInHour)
@@ -76,6 +76,7 @@ class UserInterface(Frame):
         canvas = FigureCanvasTkAgg(f, self)
         canvas.show()
         canvas.get_tk_widget().grid(column=3, row=0, rowspan=7)
+
 
     def createUI(self):
         """
@@ -127,7 +128,7 @@ if __name__ == '__main__':
     hubway = pickle.load(open('LargeDataStorage/hubwayDataFile', 'rb'))
     print 'Hubway data: complete'
     print 'Prediction model: loading...'
-    ridershipModel = pickle.load(open('LargeDataStorage/mlModel', 'rb'))
+    ridershipModel = pickle.load(open('LargeDataStorage/mlModelNoWeather', 'rb'))
     print 'Prediction model: complete'
     UI = UserInterface()
     UI.mainloop()

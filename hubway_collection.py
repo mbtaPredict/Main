@@ -6,6 +6,7 @@ hubway_collection.py contains the hubwayDatum class and associated functions for
 from os import path
 import csv
 import pickle
+import numpy as np
 
 
 def parse_datetime(datetime):
@@ -87,6 +88,7 @@ class HubwayDatum:
 	def __init__(self):
 		self.data = {}
 
+
 	def add_year(self, year):
 		"""
 		Input: integer for year you want to add hubway data for(we have to
@@ -112,6 +114,7 @@ class HubwayDatum:
 					for minute in xrange(60):
 						self.data[year][month+1][day+1][hour][minute] = archived_minute(yearHubwayData, year, month+1, day+1, hour, minute)
 
+
 	def total_rides_in_day(self, year, month, day):
 		"""
 		Input: integers for year, month, day
@@ -128,6 +131,7 @@ class HubwayDatum:
 					numRidesInDay += len(self.data[year][month][day][hour][minute])
 		return numRidesInDay
 
+
 	def total_rides_in_hour(self, year, month, day, hour):
 		"""
 		Input: integers for year, month, day, hour
@@ -142,3 +146,65 @@ class HubwayDatum:
 			else:	
 				numRidesInHour += len(self.data[year][month][day][hour][minute])
 		return numRidesInHour
+
+
+class HubwayPredictionDatum:
+	def __init__(self):
+		self.data = {}
+
+
+	def add_year(self, year):
+		"""
+		Input: integer for year you want to add hubway data for(we have to
+			have the hubway data already stored for that year)
+		Output: stores the hubway data for that year in the class
+		"""
+
+		year = int(year)
+
+		if year % 4 == 0:
+			numDaysInMonth = [31, 29, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31]
+		else:
+			numDaysInMonth = [31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31]
+		self.data[year] = {}
+		for month in xrange(12):
+			self.data[year][month+1] = {}
+			for day in xrange(numDaysInMonth[month]):
+				self.data[year][month+1][day+1] = {}
+				for hour in xrange(24):
+					self.data[year][month+1][day+1][hour] = float(ridershipModel.predict(np.array([month, day, hour])))
+		pickle.dump(hubwayPrediction, open('LargeDataStorage/hubwayPredictionDataFile', 'wb'))
+
+
+	def total_rides_in_day(self, year, month, day):
+		"""
+		Input: integers for year, month, day
+		Output: integer for total number of rides on that day
+		"""
+
+		numRidesInDay = 0
+
+		for hour in self.data[year][month][day]:
+			numRidesInDay += self.data[year][month][day][hour]
+		return numRidesInDay
+
+
+if __name__ == '__main__':
+	# hubwayPrediction = HubwayPredictionDatum()
+	# pickle.dump(hubwayPrediction, open('LargeDataStorage/hubwayPredictionDataFile', 'wb'))
+
+	# hubwayPrediction = pickle.load(open('LargeDataStorage/hubwayPredictionDataFile', 'rb'))
+	# ridershipModel = pickle.load(open('LargeDataStorage/mlModelNoWeather', 'rb'))
+	# hubwayPrediction.add_year(2015)
+
+	# hubwayPrediction = pickle.load(open('LargeDataStorage/hubwayPredictionDataFile', 'rb'))
+	# numDaysInMonth = [31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31]
+	# for month in xrange(5, 8):
+	# 	for day in xrange(numDaysInMonth[month-1]):
+	# 		for hour in xrange(24):
+	# 			if hubwayPrediction.data[2015][month][day+1][hour] < 0:
+	# 				print hubwayPrediction.data[2015][month][day+1][hour]
+	# pickle.dump(hubwayPrediction, open('LargeDataStorage/hubwayPredictionDataFile', 'wb'))
+
+	# print hubwayPrediction.total_rides_in_day(2015, 5, 5)
+	pass
