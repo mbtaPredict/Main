@@ -59,26 +59,28 @@ def process_data():
                 for hour in range(0,24):
                     # this is here to make sure that data for April starts on the 2nd
                     if month == 4:
-                        # weekday = int(date(year, month, day+2).weekday()<5)
-                        # tempi = int(float(weather.data[year][month][day+2][hour]['tempi']))
-                        # if int(float(weather.data[year][month][day+2][hour]['precipi'])) < 0:
-                        #     precipi = 0
-                        # else: 
-                        #     precipi = int(float(weather.data[year][month][day+2][hour]['precipi']))
-                        # snow = int(weather.data[year][month][day+2][hour]['snow'])
+                        weekday = int(date(year, month, day+2).weekday()<5)
+                        tempi = int(float(weather.data[year][month][day+2][hour]['tempi']))
+                        if int(float(weather.data[year][month][day+2][hour]['precipi'])) < 0:
+                            precipi = 0
+                        else: 
+                            precipi = int(float(weather.data[year][month][day+2][hour]['precipi']))
+                        snow = int(weather.data[year][month][day+2][hour]['snow'])
                         riders = count_riders(year, month, day+2, hour)
+                        #Depending on what model you are creating, use different 'curr_list'
                         # curr_list = [year, month, day+2, hour, weekday, tempi, precipi, snow, riders]
                         curr_list = [year, month, day+2, hour, riders]
                         all_data.append(curr_list)
                     else:
-                        # weekday = int(date(year, month, day+1).weekday()<5)
-                        # tempi = int(float(weather.data[year][month][day+1][hour]['tempi']))
-                        # if int(float(weather.data[year][month][day+1][hour]['precipi'])) < 0:
-                        #     precipi = 0
-                        # else:
-                        #     precipi = int(float(weather.data[year][month][day+1][hour]['precipi']))
-                        # snow = int(weather.data[year][month][day+1][hour]['snow'])
+                        weekday = int(date(year, month, day+1).weekday()<5)
+                        tempi = int(float(weather.data[year][month][day+1][hour]['tempi']))
+                        if int(float(weather.data[year][month][day+1][hour]['precipi'])) < 0:
+                            precipi = 0
+                        else:
+                            precipi = int(float(weather.data[year][month][day+1][hour]['precipi']))
+                        snow = int(weather.data[year][month][day+1][hour]['snow'])
                         riders = count_riders(year, month, day+1, hour)
+                        #Depending on what model you are creating, use different 'curr_list'
                         # curr_list = [year, month, day+1, hour, weekday, tempi, precipi, snow, riders]
                         curr_list = [year, month, day+1, hour, riders]
                         all_data.append(curr_list)
