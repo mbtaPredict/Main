@@ -1,3 +1,8 @@
+"""
+This is the main file that should be run in order to use hubwayPredict. It loads all of the appropriate
+data (which takes about 60 seconds) and then brings up the GUI.
+"""
+
 from Tkinter import *
 from datetime import *
 from hubway_collection import *
